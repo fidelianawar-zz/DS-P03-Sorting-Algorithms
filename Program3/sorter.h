@@ -22,20 +22,25 @@ public:
 //bubble
 template <typename T>
 class MysterySorterA : public Sorter<T> {
+private:
+    void swapElements(int xp, int yp)
+    {
+        int temp = xp;
+        xp = yp;
+        yp = temp;
+    }
 public:
     int size = this->data.size();
     virtual void sort() {
-        // Base case
-        if (size == 1){
-            return;
+        int i, j;
+        for (i = 0; i < size-1; i++){
+            // Last i elements are already in place
+            for (j = 0; j < size-i-1; j++){
+                if (this->data[j] > this->data[j+1]){
+                    swapElements(this->data[j], this->data[j+1]);
+                }
+            }
         }
-        // One pass of bubble sort. After this pass, the largest element is moved/bubbled to end.
-        for (int i=0; i<size-1; i++)
-            if (this->data[i] > this->data[i+1])
-                swap(this->data[i], this->data[i+1]);
-
-        // Largest element is fixed, recur for remaining array
-        bubbleSort(this->data, size-1);
 
         auto& t1 = this->data[0];
         auto& t2 = this->data[1];
@@ -76,121 +81,117 @@ public:
 template <typename T>
 class MysterySorterC : public Sorter<T> {
 private:
-    void merge(int arr[], int l, int m, int r){
-        int i, j, k;
-        int n1 = m - l + 1;
-        int n2 =  r - m;
+    void mergeElements(int arr[], int l, int m, int r){
 
-        /* create temp arrays */
-        int L[n1], R[n2];
-
-        /* Copy data to temp arrays L[] and R[] */
-        for (i = 0; i < n1; i++)
-            L[i] = this->data[l + i];
-        for (j = 0; j < n2; j++)
-            R[j] = this->data[m + 1+ j];
-
-        /* Merge the temp arrays back into arr[l..r]*/
-        i = 0; // Initial index of first subarray
-        j = 0; // Initial index of second subarray
-        k = l; // Initial index of merged subarray
-        while (i < n1 && j < n2)
-        {
-            if (L[i] <= R[j])
-            {
-                this->data[k] = L[i];
-                i++;
-            }
-            else
-            {
-                this->data[k] = R[j];
-                j++;
-            }
-            k++;
-        }
-
-        /* Copy the remaining elements of L[], if there
-           are any */
-        while (i < n1)
-        {
-            this->data[k] = L[i];
-            i++;
-            k++;
-        }
-
-        /* Copy the remaining elements of R[], if there
-           are any */
-        while (j < n2)
-        {
-            this->data[k] = R[j];
-            j++;
-            k++;
-        }
     }
 public:
     virtual void sort() {
-        int l = 0;
-        int r = this->data.size();
+
+        int i, j, k;
+           int n1 = m - l + 1;
+           int n2 =  r - m;
+
+           /* create temp arrays */
+           int L[n1], R[n2];
+
+           /* Copy data to temp arrays L[] and R[] */
+           for (i = 0; i < n1; i++)
+               L[i] = arr[l + i];
+           for (j = 0; j < n2; j++)
+               R[j] = arr[m + 1+ j];
+
+           /* Merge the temp arrays back into arr[l..r]*/
+           i = 0; // Initial index of first subarray
+           j = 0; // Initial index of second subarray
+           k = l; // Initial index of merged subarray
+           while (i < n1 && j < n2)
+           {
+               if (L[i] <= R[j])
+               {
+                   arr[k] = L[i];
+                   i++;
+               }
+               else
+               {
+                   arr[k] = R[j];
+                   j++;
+               }
+               k++;
+           }
+
+           /* Copy the remaining elements of L[], if there
+              are any */
+           while (i < n1)
+           {
+               arr[k] = L[i];
+               i++;
+               k++;
+           }
+
+           /* Copy the remaining elements of R[], if there
+              are any */
+           while (j < n2)
+           {
+               arr[k] = R[j];
+               j++;
+               k++;
+           }
 
         std::cout << "Mystery Sorter C" << std::endl;
-        if (l < r)
-        {
-            // Same as (l+r)/2, but avoids overflow for
-            // large l and h
-            int m = l+(r-l)/2;
-
-            // Sort first and second halves
-            mergeSort(this->data, l, m);
-            mergeSort(this->data, m+1, r);
-
-            merge(this->data, l, m, r);
-        }
     }
+
 };
 
 //quicksort
-template <typename T>
-class MysterySorterD : public Sorter<T> {
-public:
-    int left;
-    int right;
+//template <typename T>
+//class MysterySorterD : public Sorter<T> {
+//public:
+//    int left;
+//    int right;
 
-    virtual void sort() {
-        int i = left, j = right;
-        int temp;
+//    virtual void sort() {
+//        int i = left, j = right;
+//        int temp;
 
-        int pivot = this->data[(left+right)/2];
+//        int pivot = this->data[(left+right)/2];
 
-        while (i <= j) {
-            while (this->data[i] < pivot){
-                i++;
-            }
-            while (pivot < this->data[j]){
-                j--;
-            }
-            if (i <= j) {
-                temp = this->data[i];
-                this->data[i] = this->data[j];
-                this->data[j] = temp;
-                i++;
-                j--;
-            }
-        }
+//        while (i <= j) {
+//            while (this->data[i] < pivot){
+//                i++;
+//            }
+//            while (pivot < this->data[j]){
+//                j--;
+//            }
+//            if (i <= j) {
+//                temp = this->data[i];
+//                this->data[i] = this->data[j];
+//                this->data[j] = temp;
+//                i++;
+//                j--;
+//            }
+//        }
 
-        if (left < j){
-            quickSort(left, j);
-        }
-        if (i < right){
-            quickSort(i, right);
-        }
+//        if (left < j){
+//            quickSort(left, j);
+//        }
+//        if (i < right){
+//            quickSort(i, right);
+//        }
 
-        std::cout << "Mystery Sorter D" << std::endl;
-    }
-};
+//        std::cout << "Mystery Sorter D" << std::endl;
+//    }
+//};
 
 //selection sort
 template <typename T>
 class MysterySorterE : public Sorter<T> {
+private:
+    void swapElements(int xp, int yp)
+    {
+        int temp = xp;
+        xp = yp;
+        yp = temp;
+    }
 public:
     int size = this->data.size();
     virtual void sort() {
@@ -201,7 +202,7 @@ public:
                 if(this->data[j] < this->data[imin])
                     imin = j;
             //placing in correct position
-            swap(this->data[i], this->data[imin]);
+            swapElements(this->data[i], this->data[imin]);
         }
         std::cout << "Mystery Sorter E" << std::endl;
     }
