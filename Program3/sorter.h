@@ -70,7 +70,7 @@ public:
             }
             this->data[j + 1] = key;
         }
-        std::cout << "Mystery Sorter B" << std::endl;
+//        std::cout << "Mystery Sorter B" << std::endl;
 //        for(int i = 0; i < this->data.size(); i++ ){
 //            cout << this->data[i] << ' ';
 //        }
@@ -170,7 +170,7 @@ public:
 
             merge(this->data, l, m, r);
         }
-        std::cout << "Mystery Sorter C" << std::endl;
+//        std::cout << "Mystery Sorter C" << std::endl;
 //        for(int i = 0; i < this->data.size(); i++ ){
 //            cout << this->data[i] << ' ';
 //        }
@@ -247,7 +247,7 @@ public:
             quickSort(this->data, low, pi - 1);
             quickSort(this->data, pi + 1, high);
         }
-        std::cout << "Mystery Sorter D" << std::endl;
+//        std::cout << "Mystery Sorter D" << std::endl;
 //        for(int i = 0; i <  this->data.size(); i++ ){
 //            cout << this->data[i] << ' ';
 //        }
@@ -276,7 +276,7 @@ public:
             //placing in correct position
             swapElements(&this->data[i], &this->data[imin]);
         }
-        std::cout << "Mystery Sorter E" << std::endl;
+//        std::cout << "Mystery Sorter E" << std::endl;
 //        for(int i = 0; i < this->data.size(); i++ ){
 //            cout << this->data[i] << ' ';
 //        }

@@ -26,7 +26,9 @@ private:
 public:
     sorterMain();
     void populateBubbleBest();
+    void populateBubbleAverage();
     void populateBubbleWorst();
+    void populateMergeWorst();
     void populateVectorBBest();
     void populateVectorBWorst();
     void populateVectorCBest();
