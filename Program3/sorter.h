@@ -43,10 +43,10 @@ public:
                 }
             }
         }
-        for(int i = 0; i < this->data.size(); i++ ){
-            cout << this->data[i] << ' ';
-        }
-        cout << endl;
+//        for(int i = 0; i < this->data.size(); i++ ){
+//            cout << this->data[i] << ' ';
+//        }
+//        cout << endl;
     }
 };
 
@@ -55,7 +55,6 @@ template <typename T>
 class MysterySorterB : public Sorter<T> {
 public:
     virtual void sort() {
-
         int i, key, j;
         for (i = 1; i < this->data.size(); i++)
         {
@@ -72,12 +71,11 @@ public:
             this->data[j + 1] = key;
         }
         std::cout << "Mystery Sorter B" << std::endl;
-        for(int i = 0; i < this->data.size(); i++ ){
-            cout << this->data[i] << ' ';
-        }
-         cout << endl;
+//        for(int i = 0; i < this->data.size(); i++ ){
+//            cout << this->data[i] << ' ';
+//        }
+//         cout << endl;
     }
-
 };
 
 //merge
@@ -173,12 +171,11 @@ public:
             merge(this->data, l, m, r);
         }
         std::cout << "Mystery Sorter C" << std::endl;
-        for(int i = 0; i < this->data.size(); i++ ){
-            cout << this->data[i] << ' ';
-        }
-         cout << endl;
+//        for(int i = 0; i < this->data.size(); i++ ){
+//            cout << this->data[i] << ' ';
+//        }
+//         cout << endl;
     }
-
 };
 
 //quicksort
@@ -251,10 +248,10 @@ public:
             quickSort(this->data, pi + 1, high);
         }
         std::cout << "Mystery Sorter D" << std::endl;
-        for(int i = 0; i <  this->data.size(); i++ ){
-            cout << this->data[i] << ' ';
-        }
-         cout << endl;
+//        for(int i = 0; i <  this->data.size(); i++ ){
+//            cout << this->data[i] << ' ';
+//        }
+//         cout << endl;
     }
 };
 
@@ -280,10 +277,10 @@ public:
             swapElements(&this->data[i], &this->data[imin]);
         }
         std::cout << "Mystery Sorter E" << std::endl;
-        for(int i = 0; i < this->data.size(); i++ ){
-            cout << this->data[i] << ' ';
-        }
-         cout << endl;
+//        for(int i = 0; i < this->data.size(); i++ ){
+//            cout << this->data[i] << ' ';
+//        }
+//         cout << endl;
     }
 };
 
