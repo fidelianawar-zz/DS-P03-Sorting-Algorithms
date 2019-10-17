@@ -10,8 +10,13 @@ sorterMain::sorterMain()
     vector.push_back(2);
     vector.push_back(4);
     vector.push_back(3);
-    sortE.setData(vector);
-    sortE.sort();
+    vector.push_back(9);
+    vector.push_back(2340);
+    vector.push_back(35635763);
+    vector.push_back(34);
+    vector.push_back(234);
+    sortA.setData(vector);
+    sortA.sort();
 
 
 }
