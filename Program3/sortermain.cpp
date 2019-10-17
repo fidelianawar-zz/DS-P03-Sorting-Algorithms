@@ -10,6 +10,8 @@ sorterMain::sorterMain()
     vector.push_back(2);
     vector.push_back(4);
     vector.push_back(3);
-    sortA.setData(vector);
-    sortA.sort();
+    sortE.setData(vector);
+    sortE.sort();
+
+
 }
