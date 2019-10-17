@@ -1,22 +1,41 @@
 #include "sortermain.h"
 #include <iostream>
 #include <vector>
+#include <chrono>
+
+using namespace std::chrono;
+
+//bubble sort best
+void sorterMain::populateVectorABest(){
+    for(int i = 0; i < 10; i++){
+        elementsA.push_back(i);
+    }
+    sortA.setData(elementsA);
+
+    auto start = high_resolution_clock::now();
+    sortA.sort();
+    auto end = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>(end-start);
+    cout << "The time it took to sort was: " << duration.count() << " milliseconds." << endl;
+}
+
+//bubble sort worst
+void sorterMain::populateVectorAWorst(){
+    for(int i = 10; i > 0; i--){
+        elementsA.push_back(i);
+    }
+    sortA.setData(elementsA);
+
+    auto start = high_resolution_clock::now();
+    sortA.sort();
+    auto end = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>(end-start);
+    cout << "The time it took to sort was: " << duration.count() << " milliseconds." << endl;
+}
 
 sorterMain::sorterMain()
 {
-    vector<int> vector;
-    vector.push_back(1);
-    vector.push_back(5);
-    vector.push_back(2);
-    vector.push_back(4);
-    vector.push_back(3);
-    vector.push_back(9);
-    vector.push_back(2340);
-    vector.push_back(35635763);
-    vector.push_back(34);
-    vector.push_back(234);
-    sortA.setData(vector);
-    sortA.sort();
-
-
+    populateVectorABest();
 }

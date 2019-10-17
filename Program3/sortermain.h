@@ -12,14 +12,21 @@ class sorterMain
 private:
     //Sorter<int> *sortA;
     MysterySorterA<int> sortA;
-  //vector<int> numberVector;
     MysterySorterB<int> sortB;
     MysterySorterC<int> sortC;
     MysterySorterD<int> sortD;
     MysterySorterE<int> sortE;
 
+    vector<int> elementsA;
+    vector<int> elementsB;
+    vector<int> elementsC;
+    vector<int> elementsD;
+    vector<int> elementsE;
+
 public:
     sorterMain();
+    void populateVectorABest();
+    void populateVectorAWorst();
 };
 
 

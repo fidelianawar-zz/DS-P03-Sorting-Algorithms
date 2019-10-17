@@ -19,7 +19,6 @@ public:
         data = x;
     }
     virtual void sort() = 0;
-
 };
 
 //bubble
@@ -44,10 +43,10 @@ public:
                 }
             }
         }
-        cout<<"size of vector: "<<this->data.size()<<endl;
         for(int i = 0; i < this->data.size(); i++ ){
             cout << this->data[i] << ' ';
         }
+        cout << endl;
     }
 };
 
@@ -76,6 +75,7 @@ public:
         for(int i = 0; i < this->data.size(); i++ ){
             cout << this->data[i] << ' ';
         }
+         cout << endl;
     }
 
 };
@@ -176,6 +176,7 @@ public:
         for(int i = 0; i < this->data.size(); i++ ){
             cout << this->data[i] << ' ';
         }
+         cout << endl;
     }
 
 };
@@ -253,6 +254,7 @@ public:
         for(int i = 0; i <  this->data.size(); i++ ){
             cout << this->data[i] << ' ';
         }
+         cout << endl;
     }
 };
 
@@ -281,6 +283,7 @@ public:
         for(int i = 0; i < this->data.size(); i++ ){
             cout << this->data[i] << ' ';
         }
+         cout << endl;
     }
 };
 
