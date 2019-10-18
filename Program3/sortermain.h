@@ -24,15 +24,20 @@ private:
     vector<int> elementsD;
     vector<int> elementsE;
 
+    //vector of pairs
+    //first element: index 0-5 to represent sorts, second element: sort time
     vector<pair<int, double>> sortTimes;
     string mysteryNames[5];
+
+    int num = 1000;
 
 
 public:
     sorterMain();
-    void populateBubbleBest();
+    void bestCaseinOrder();
+    void worstCaseReverse();
+
     void populateBubbleAverage();
-    void populateBubbleWorst();
     void populateMergeWorst();
     void populateVectorBBest();
     void populateVectorBWorst();
@@ -51,6 +56,9 @@ public:
 
     void timeOrganizer(int);
     void printResults(int);
+    void performAverageSort();
+    void performWorstSort();
+    void performBestSort();
 
 };
 

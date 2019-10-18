@@ -40,7 +40,10 @@ public:
             // Last i elements are already in place
             for (j = 0; j < this->data.size()-i-1; j++){
                 if (this->data[j] > this->data[j+1]){
-                    swapElements(&this->data[j], &this->data[j+1]);
+                    //swapElements(&this->data[j], &this->data[j+1]);
+                    int temp = this->data[j];
+                    this->data[j] = this->data[j+1];
+                    this->data[j+1] = temp;
                 }
             }
         }
@@ -58,10 +61,6 @@ class MysterySorterB : public Sorter<T> {
 public:
     virtual void sort() {
 
-//        for(auto it = this->data.begin(); it != this->data.end(); it++){
-//            auto const insertion_point = upper_bound(this->data.begin(), it, *it);
-//            rotate(insertion_point, it, it+1);
-//        }
         int i, key, j;
         for (i = 1; i < this->data.size(); i++)
         {
