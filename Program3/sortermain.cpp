@@ -67,7 +67,6 @@ void sorterMain::populateMysteryA(vector<int> &Aelements){
 
     totalTime = timeLength/50.0;
 
-    //sortTimes.reserve(1);
     sortTimes.push_back(make_pair(0,totalTime));
     mysteryNames[0] = "MysteryA is: ";
 
@@ -90,9 +89,10 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
         chrono::duration<double, micro> duration = end-start;
         timeLength += duration.count();
     }
+
     totalTime = timeLength/50.0;
 
-    sortTimes.push_back(make_pair(1,totalTime));
+    sortTimes.push_back(make_pair(0,totalTime));
     mysteryNames[1] = "MysteryB is: ";
 
     cout << "insertion took: " << totalTime << " microseconds." << endl;

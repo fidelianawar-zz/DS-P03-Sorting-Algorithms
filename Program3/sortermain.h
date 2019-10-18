@@ -29,7 +29,7 @@ private:
     vector<pair<int, double>> sortTimes;
     string mysteryNames[5];
 
-    int num = 1000;
+    int num = 60000;
 
 
 public:
