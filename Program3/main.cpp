@@ -5,8 +5,4 @@
 
 using namespace std;
 
-int main()
-{
-    sorterMain object;
-    return 1;
-}
+

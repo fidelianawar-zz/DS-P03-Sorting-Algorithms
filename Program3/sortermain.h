@@ -25,6 +25,7 @@ private:
     vector<int> elementsE;
 
     vector<pair<int, double>> sortTimes;
+    string mysteryNames[5];
 
 
 public:
@@ -42,13 +43,14 @@ public:
     void populateVectorEBest();
     void populateVectorEWorst();
 
-    void populateMysteryA();
-    void populateMysteryB();
-    void populateMysteryC();
-    void populateMysteryD();
-    void populateMysteryE();
+    void populateMysteryA(vector<int> &a);
+    void populateMysteryB(vector<int> &b);
+    void populateMysteryC(vector<int> &c);
+    void populateMysteryD(vector<int> &d);
+    void populateMysteryE(vector<int> &e);
 
-    void timeOrganizer();
+    void timeOrganizer(int);
+    void printResults(int);
 
 };
 
