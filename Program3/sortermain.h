@@ -1,4 +1,5 @@
 #include <vector>
+#include <utility>
 #include <iostream>
 #include <sorter.h>
 
@@ -23,6 +24,9 @@ private:
     vector<int> elementsD;
     vector<int> elementsE;
 
+    vector<pair<int, double>> sortTimes;
+
+
 public:
     sorterMain();
     void populateBubbleBest();
@@ -37,6 +41,15 @@ public:
     void populateVectorDWorst();
     void populateVectorEBest();
     void populateVectorEWorst();
+
+    void populateMysteryA();
+    void populateMysteryB();
+    void populateMysteryC();
+    void populateMysteryD();
+    void populateMysteryE();
+
+    void timeOrganizer();
+
 };
 
 

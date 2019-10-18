@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <bits/stdc++.h>
 
 #ifndef SORTINGFUN_SORTER_H
 #define SORTINGFUN_SORTER_H
@@ -43,6 +44,7 @@ public:
                 }
             }
         }
+//        std::cout << "Mystery Sorter A" << std::endl;
 //        for(int i = 0; i < this->data.size(); i++ ){
 //            cout << this->data[i] << ' ';
 //        }
@@ -55,6 +57,11 @@ template <typename T>
 class MysterySorterB : public Sorter<T> {
 public:
     virtual void sort() {
+
+//        for(auto it = this->data.begin(); it != this->data.end(); it++){
+//            auto const insertion_point = upper_bound(this->data.begin(), it, *it);
+//            rotate(insertion_point, it, it+1);
+//        }
         int i, key, j;
         for (i = 1; i < this->data.size(); i++)
         {
@@ -70,6 +77,7 @@ public:
             }
             this->data[j + 1] = key;
         }
+
 //        std::cout << "Mystery Sorter B" << std::endl;
 //        for(int i = 0; i < this->data.size(); i++ ){
 //            cout << this->data[i] << ' ';
