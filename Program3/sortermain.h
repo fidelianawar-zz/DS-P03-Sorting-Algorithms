@@ -29,24 +29,16 @@ private:
     vector<pair<int, double>> sortTimes;
     string mysteryNames[5];
 
-    int num = 1000;
+    int num = 100;
 
 
 public:
     sorterMain();
-    void bestCaseinOrder();
-    void worstCaseReverse();
 
-    void populateBubbleAverage();
     void populateMergeWorst();
-    void populateVectorBBest();
-    void populateVectorBWorst();
-    void populateVectorCBest();
-    void populateVectorCWorst();
-    void populateVectorDBest();
-    void populateVectorDWorst();
-    void populateVectorEBest();
-    void populateVectorEWorst();
+
+    void sortAscendingValues();
+    void sortDescendingValues();
 
     void populateMysteryA(vector<int> &a);
     void populateMysteryB(vector<int> &b);
@@ -54,12 +46,9 @@ public:
     void populateMysteryD(vector<int> &d);
     void populateMysteryE(vector<int> &e);
 
-    void timeOrganizer(int);
-    void printResults(int);
+    void timeOrganizer();
+    void printResults();
     void performAverageSort();
-    void performWorstSort();
-    void performBestSort();
-
 };
 
 

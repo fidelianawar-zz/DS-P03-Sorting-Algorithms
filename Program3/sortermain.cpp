@@ -14,11 +14,10 @@ using namespace std::chrono;
 //insertion worst: descending sorter
 //efficient for small data sets
 
-//merge best: ascending order
+//merge best: same everytime
 //merge worst: vector is made of left even sub array, right odd subarray
 
-//selection best: ascending order
-//selection worst: descending order
+//selection best: same everytime
 
 //quick best: median is first element
 //quick worst: ascending sorted
@@ -70,7 +69,7 @@ void sorterMain::populateMysteryA(vector<int> &Aelements){
     sortTimes.push_back(make_pair(0,totalTime));
     mysteryNames[0] = "MysteryA is: ";
 
-    cout << "bubble took: " << totalTime << " microseconds." << endl;
+    cout << "q " << totalTime << " microseconds." << endl;
 }
 
 //insertion
@@ -95,7 +94,7 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
     sortTimes.push_back(make_pair(1,totalTime));
     mysteryNames[1] = "MysteryB is: ";
 
-    cout << "insertion took: " << totalTime << " microseconds." << endl;
+    cout << "m " << totalTime << " microseconds." << endl;
 }
 
 //merge
@@ -118,7 +117,7 @@ void sorterMain::populateMysteryC(vector<int> &Celements){
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(2,totalTime));
     mysteryNames[2] = "MysteryC is: ";
-    cout << "merge took: " << totalTime << " microseconds." << endl;
+    cout << "b " << totalTime << " microseconds." << endl;
 }
 
 //quick
@@ -141,7 +140,7 @@ void sorterMain::populateMysteryD(vector<int> &Delements){
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(3,totalTime));
     mysteryNames[3] = "MysteryD is: ";
-    cout << "quick took: " << totalTime << " microseconds." << endl;
+    cout << "s " << totalTime << " microseconds." << endl;
 }
 
 //selection
@@ -164,197 +163,117 @@ void sorterMain::populateMysteryE(vector<int> &Eelements){
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(4,totalTime));
     mysteryNames[4] = "MysteryE is: ";
-    cout << "selection took: " << totalTime << " microseconds." << endl;
+    cout << "i " << totalTime << " microseconds." << endl;
 }
 
-void sorterMain::timeOrganizer(int num){
+void sorterMain::timeOrganizer(){
     sort(sortTimes.begin(), sortTimes.end());
-    //    for(unsigned int i = 0; i < sortTimes.size(); i++){
-    //        cout << sortTimes[i].first << ", " << sortTimes[i].second << endl;
-    //    }
+    for(unsigned int i = 0; i < sortTimes.size(); i++){
+        cout << sortTimes[i].first << ", " << sortTimes[i].second << endl;
+    }
 
-    //printResults(num);
+    printResults();
 }
 
-void sorterMain::printResults(int num){
+void sorterMain::printResults(){
     cout << endl;
-    if(num <= 15){
-        for(int i = 0; i < 5; i++){
-            cout << mysteryNames[i];
-            for(unsigned int j = 0; j < 5; j++){
-                if(sortTimes[j].first == i){
-                    if(sortTimes[j].first == 0){
-                        cout << " is bubble sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 1){
-                        cout << " insertion sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 2){
-                        cout << " merge sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 3){
-                        cout << " quick sort." << endl; //selection
-                    }
-                    else if(sortTimes[j].first == 4){
-                        cout << " selection sort." << endl; //quick
-                    }
+    for(int i = 0; i < 5; i++){
+        cout << mysteryNames[i];
+        for(unsigned int j = 0; j < 5; j++){
+            if(sortTimes[j].first == i){
+                if(sortTimes[j].first == 0){
+                    cout << "Quick sort." << endl;
+                }
+                else if(sortTimes[j].first == 1){
+                    cout << "Merge sort." << endl;
+                }
+                else if(sortTimes[j].first == 2){
+                    cout << "Insertion sort." << endl;
+                }
+                else if(sortTimes[j].first == 3){
+                    cout << "Selection sort." << endl; //selection
+                }
+                else if(sortTimes[j].first == 4){
+                    cout << "Bubble sort." << endl; //quick
                 }
             }
         }
     }
-    else if(num == 100){
-        for(int i = 0; i < 5; i++){
-            cout << mysteryNames[i];
-            for(unsigned int j = 0; j < 5; j++){
-                if(sortTimes[j].first == i){
-                    if(sortTimes[j].first == 0){
-                        cout << " insertion sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 1){
-                        cout << " selection sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 2){
-                        cout << " bubble sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 3){
-                        cout << " merge sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 4){
-                        cout << " quick sort." << endl;
-                    }
-                }
-            }
-        }
-    }
-    else if(num == 1000){
-        for(int i = 0; i < 5; i++){
-            cout << mysteryNames[i];
-            for(unsigned int j = 0; j < 5; j++){
-                if(sortTimes[j].first == i){
-                    if(sortTimes[j].first == 0){
-                        cout << " insertion sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 1){
-                        cout << " quick sort." << endl; //merge
-                    }
-                    else if(sortTimes[j].first == 2){
-                        cout << " merge sort." << endl; //selection
-                    }
-                    else if(sortTimes[j].first == 3){
-                        cout << " selection sort." << endl; //bubble
-                    }
-                    else if(sortTimes[j].first == 4){
-                        cout << " bubble sort." << endl; //quick
-                    }
-                }
-            }
-        }
-    }
-    else if(num == 30000){
-        for(int i = 0; i < 5; i++){
-            for(unsigned int j = 0; j < 5; j++){
-                if(sortTimes[j].first == i){
-                    if(sortTimes[j].first == 0){
-                        cout << " is quick sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 1){
-                        cout << " is insertion sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 2){
-                        cout << " is merge sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 3){
-                        cout << " is selection sort." << endl;
-                    }
-                    else if(sortTimes[j].first == 4){
-                        cout << " is bubble sort." << endl;
-                    }
-                }
-            }
-        }
-    }
-    cout << endl;
 }
+
 
 sorterMain::sorterMain()
 {
 }
 
 void sorterMain::performAverageSort(){
+
     vector<int> populateAverageVector;
+
     for(int i = 0; i < num; i++){
         populateAverageVector.push_back(((rand()%100)+1));
     }
 
-    //bubble
     populateMysteryA(populateAverageVector);
-
-    //insertion
     populateMysteryB(populateAverageVector);
-
-    //merge
     populateMysteryC(populateAverageVector);
-
-    //quick
     populateMysteryD(populateAverageVector);
-
-    //selection
     populateMysteryE(populateAverageVector);
 
-    timeOrganizer(num);
-
+    timeOrganizer();
 }
 
-void sorterMain::performWorstSort(){
-    vector<int> populateWorstVector;
+void sorterMain::sortAscendingValues(){
 
-    for(unsigned int i = 0; i < num; i++){
-        populateWorstVector.push_back(i);
+    vector<int> populateVec;
+
+    for(int i = 0; i < num; i++){
+        populateVec.push_back(i);
     }
 
-    reverse(populateWorstVector.begin(), populateWorstVector.end());
+    populateMysteryA(populateVec);
+    populateMysteryB(populateVec);
+    populateMysteryC(populateVec);
+    populateMysteryD(populateVec);
+    populateMysteryE(populateVec);
 
-    //bubble
-    populateMysteryA(populateWorstVector);
+    timeOrganizer();
 
-    //insertion
-    populateMysteryB(populateWorstVector);
-
-    //merge
-    populateMysteryC(populateWorstVector);
-
-    //quick
-    populateMysteryD(populateWorstVector);
-
-    //selection
-    populateMysteryE(populateWorstVector);
-
-    timeOrganizer(num);
-}
-
-void sorterMain::performBestSort(){
-    vector<int> populateBestVector;
-
-    for(unsigned int i = 0; i < num; i++){
-        populateBestVector.push_back(i);
+    double longestTime = 0.0;
+    for(unsigned int i = 0; i < sortTimes.size(); i++){
+        if(sortTimes[i].second > longestTime){
+            longestTime = sortTimes[i].second;
+        }
     }
 
-    //bubble
-    populateMysteryA(populateBestVector);
+}
 
-    //insertion
-    populateMysteryB(populateBestVector);
+void sorterMain::sortDescendingValues(){
 
-    //merge
-    populateMysteryC(populateBestVector);
+    vector<int> populateVec;
 
-    //quick
-    populateMysteryD(populateBestVector);
+    for(int i = 0; i < num; i++){
+        populateVec.push_back(i);
+    }
 
-    //selection
-    populateMysteryE(populateBestVector);
+    reverse(populateVec.begin(),populateVec.end());
 
-    timeOrganizer(num);
+    populateMysteryA(populateVec);
+    populateMysteryB(populateVec);
+    populateMysteryC(populateVec);
+    populateMysteryD(populateVec);
+    populateMysteryE(populateVec);
+
+    timeOrganizer();
+
+    double longestTime = 0.0;
+    for(unsigned int i = 0; i < sortTimes.size(); i++){
+        if(sortTimes[i].second > longestTime){
+            longestTime = sortTimes[i].second;
+        }
+    }
 
 }
+
+
 
