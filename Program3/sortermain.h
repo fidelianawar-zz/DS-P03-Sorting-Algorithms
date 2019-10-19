@@ -19,7 +19,7 @@ private:
 
     //vector of pairs
     //first element: index 0-5 to represent sorts, second element: sort time
-    vector<pair<int, double>> sortTimes;
+    vector<pair<double, int>> sortTimes;
     string mysteryNames[5];
 
     int num = 5000;

@@ -26,7 +26,7 @@ void sorterMain::populateMysteryA(vector<int> &Aelements){
 
     totalTime = timeLength/50.0;
 
-    sortTimes.push_back(make_pair(0,totalTime));
+    sortTimes.push_back(make_pair(totalTime,0));
     mysteryNames[0] = "MysteryA is: ";
 }
 
@@ -49,7 +49,7 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
 
     totalTime = timeLength/50.0;
 
-    sortTimes.push_back(make_pair(1,totalTime));
+    sortTimes.push_back(make_pair(totalTime,1));
     mysteryNames[1] = "MysteryB is: ";
 
 }
@@ -72,7 +72,7 @@ void sorterMain::populateMysteryC(vector<int> &Celements){
     }
 
     totalTime = timeLength/50.0;
-    sortTimes.push_back(make_pair(2,totalTime));
+    sortTimes.push_back(make_pair(totalTime,2));
     mysteryNames[2] = "MysteryC is: ";
 }
 
@@ -94,7 +94,7 @@ void sorterMain::populateMysteryD(vector<int> &Delements){
     }
 
     totalTime = timeLength/50.0;
-    sortTimes.push_back(make_pair(3,totalTime));
+    sortTimes.push_back(make_pair(totalTime,3));
     mysteryNames[3] = "MysteryD is: ";
 }
 
@@ -116,7 +116,7 @@ void sorterMain::populateMysteryE(vector<int> &Eelements){
     }
 
     totalTime = timeLength/50.0;
-    sortTimes.push_back(make_pair(4,totalTime));
+    sortTimes.push_back(make_pair(totalTime,4));
     mysteryNames[4] = "MysteryE is: ";
 }
 
@@ -131,21 +131,21 @@ void sorterMain::printResults(){
     for(int i = 0; i < 5; i++){
         cout << mysteryNames[i];
         for(unsigned int j = 0; j < 5; j++){
-            if(sortTimes[j].first == i){
-                if(sortTimes[j].first == 0){
+            if(sortTimes[j].second == i){
+                if(j == 0){
                     cout << "Quick sort." << endl;
                 }
-                else if(sortTimes[j].first == 1){
+                else if(j == 1){
                     cout << "Merge sort." << endl;
                 }
-                else if(sortTimes[j].first == 2){
+                else if(j == 2){
                     cout << "Insertion sort." << endl;
                 }
-                else if(sortTimes[j].first == 3){
-                    cout << "Selection sort." << endl; //selection
+                else if(j == 3){
+                    cout << "Selection sort." << endl;
                 }
-                else if(sortTimes[j].first == 4){
-                    cout << "Bubble sort." << endl; //quick
+                else if(j == 4){
+                    cout << "Bubble sort." << endl;
                 }
             }
         }
