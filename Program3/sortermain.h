@@ -11,25 +11,18 @@ using namespace std;
 class sorterMain
 {
 private:
-    //Sorter<int> *sortA;
-    MysterySorterA<int> sortA;
-    MysterySorterB<int> sortB;
-    MysterySorterC<int> sortC;
-    MysterySorterD<int> sortD;
-    MysterySorterE<int> sortE;
 
-    vector<int> elementsA;
-    vector<int> elementsB;
+    MysterySorterC<int> sortC;
+
     vector<int> elementsC;
-    vector<int> elementsD;
-    vector<int> elementsE;
+
 
     //vector of pairs
     //first element: index 0-5 to represent sorts, second element: sort time
     vector<pair<int, double>> sortTimes;
     string mysteryNames[5];
 
-    int num = 100;
+    int num = 5000;
 
 
 public:
@@ -39,6 +32,7 @@ public:
 
     void sortAscendingValues();
     void sortDescendingValues();
+    void sortEvenOddValues();
 
     void populateMysteryA(vector<int> &a);
     void populateMysteryB(vector<int> &b);

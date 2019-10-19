@@ -8,16 +8,11 @@ using namespace std;
 int main()
 {
     sorterMain sorterObject;
-    sorterObject.performAverageSort();
-
-   // cout << "the longest time should be quick sort: "<< endl;
-    //sorterObject.sortAscendingValues();
-
-//    cout << "the worst sort times are: "<< endl;
-    //sorterObject.performWorstSort();
-
-//    cout << "the best sort times are: "<< endl;
-    //sorterObject.performBestSort();
+    sorterObject.sortAscendingValues();
+    //cout << endl;
+    //sorterObject.sortDescendingValues();
+    //cout << endl;
+    //sorterObject.sortEvenOddValues();
 
     return 1;
 

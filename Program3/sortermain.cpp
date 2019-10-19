@@ -7,47 +7,7 @@
 
 using namespace std::chrono;
 
-//bubble best: ascending sorted
-//bubble worst: descending sorter
-
-//insertion best: ascending sorted
-//insertion worst: descending sorter
-//efficient for small data sets
-
-//merge best: same everytime
-//merge worst: vector is made of left even sub array, right odd subarray
-
-//selection best: same everytime
-
-//quick best: median is first element
-//quick worst: ascending sorted
-
-void sorterMain::populateMergeWorst(){
-
-    double timeLength = 0.0;
-    double totalTime =  0.0;
-
-    for(int i = 0; i < 1000; i+=2){
-        elementsC.push_back(i);
-    }
-    for(int i = 1; i < 1000; i+=2){
-        elementsC.push_back(i);
-    }
-    sortC.setData(elementsC);
-
-    for(int i = 0; i < 1000; i++){
-        auto start = high_resolution_clock::now();
-        sortC.sort();
-        auto end = high_resolution_clock::now();
-        chrono::duration<double, micro> duration = end-start;
-        timeLength += duration.count();
-    }
-    totalTime = timeLength/1000;
-    cout << "The time it took to sort was: " << totalTime << " milliseconds." << endl;
-
-}
-
-//bubble
+//calculating the sort time for MysteryA and storing designated values of time and mysteryName
 void sorterMain::populateMysteryA(vector<int> &Aelements){
 
     Sorter<int> *mysteryA = new MysterySorterA<int>;
@@ -68,11 +28,9 @@ void sorterMain::populateMysteryA(vector<int> &Aelements){
 
     sortTimes.push_back(make_pair(0,totalTime));
     mysteryNames[0] = "MysteryA is: ";
-
-    cout << "q " << totalTime << " microseconds." << endl;
 }
 
-//insertion
+//calculating the sort time for MysteryB and storing designated values of time and mysteryName
 void sorterMain::populateMysteryB(vector<int> &Belements){
 
     Sorter<int> *mysteryB = new MysterySorterB<int>;
@@ -94,10 +52,9 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
     sortTimes.push_back(make_pair(1,totalTime));
     mysteryNames[1] = "MysteryB is: ";
 
-    cout << "m " << totalTime << " microseconds." << endl;
 }
 
-//merge
+//calculating the sort time for MysteryC and storing designated values of time and mysteryName
 void sorterMain::populateMysteryC(vector<int> &Celements){
 
     Sorter<int> *mysteryC = new MysterySorterC<int>;
@@ -117,10 +74,9 @@ void sorterMain::populateMysteryC(vector<int> &Celements){
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(2,totalTime));
     mysteryNames[2] = "MysteryC is: ";
-    cout << "b " << totalTime << " microseconds." << endl;
 }
 
-//quick
+//calculating the sort time for MysteryD and storing designated values of time and mysteryName
 void sorterMain::populateMysteryD(vector<int> &Delements){
 
     Sorter<int> *mysteryD = new MysterySorterD<int>;
@@ -140,10 +96,9 @@ void sorterMain::populateMysteryD(vector<int> &Delements){
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(3,totalTime));
     mysteryNames[3] = "MysteryD is: ";
-    cout << "s " << totalTime << " microseconds." << endl;
 }
 
-//selection
+//calculating the sort time for MysteryE and storing designated values of time and mysteryName
 void sorterMain::populateMysteryE(vector<int> &Eelements){
 
     Sorter<int> *mysteryE = new MysterySorterE<int>;
@@ -163,20 +118,16 @@ void sorterMain::populateMysteryE(vector<int> &Eelements){
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(4,totalTime));
     mysteryNames[4] = "MysteryE is: ";
-    cout << "i " << totalTime << " microseconds." << endl;
 }
 
+//organizing sortTimes vector pair to be in order
 void sorterMain::timeOrganizer(){
     sort(sortTimes.begin(), sortTimes.end());
-    for(unsigned int i = 0; i < sortTimes.size(); i++){
-        cout << sortTimes[i].first << ", " << sortTimes[i].second << endl;
-    }
-
     printResults();
 }
 
+//printing results based up order in sortTimes
 void sorterMain::printResults(){
-    cout << endl;
     for(int i = 0; i < 5; i++){
         cout << mysteryNames[i];
         for(unsigned int j = 0; j < 5; j++){
@@ -201,11 +152,11 @@ void sorterMain::printResults(){
     }
 }
 
-
 sorterMain::sorterMain()
 {
 }
 
+//average case with random elements
 void sorterMain::performAverageSort(){
 
     vector<int> populateAverageVector;
@@ -223,6 +174,7 @@ void sorterMain::performAverageSort(){
     timeOrganizer();
 }
 
+//scenario with elements in vector in ascending order
 void sorterMain::sortAscendingValues(){
 
     vector<int> populateVec;
@@ -248,6 +200,7 @@ void sorterMain::sortAscendingValues(){
 
 }
 
+//elements in vector in descending order
 void sorterMain::sortDescendingValues(){
 
     vector<int> populateVec;
@@ -272,6 +225,52 @@ void sorterMain::sortDescendingValues(){
             longestTime = sortTimes[i].second;
         }
     }
+
+}
+
+//elements with every other element being even/odd
+void sorterMain::sortEvenOddValues(){
+
+    vector<int> populateAverageVector;
+
+    for(int i = 0; i < num; i+=2){
+        populateAverageVector.push_back(i);
+    }
+    for(int i = 1; i < num; i+=2){
+        populateAverageVector.push_back(i);
+    }
+
+    populateMysteryA(populateAverageVector);
+    populateMysteryB(populateAverageVector);
+    populateMysteryC(populateAverageVector);
+    populateMysteryD(populateAverageVector);
+    populateMysteryE(populateAverageVector);
+
+    timeOrganizer();
+}
+
+void sorterMain::populateMergeWorst(){
+
+    double timeLength = 0.0;
+    double totalTime =  0.0;
+
+    for(int i = 0; i < 1000; i+=2){
+        elementsC.push_back(i);
+    }
+    for(int i = 1; i < 1000; i+=2){
+        elementsC.push_back(i);
+    }
+    sortC.setData(elementsC);
+
+    for(int i = 0; i < 1000; i++){
+        auto start = high_resolution_clock::now();
+        sortC.sort();
+        auto end = high_resolution_clock::now();
+        chrono::duration<double, micro> duration = end-start;
+        timeLength += duration.count();
+    }
+    totalTime = timeLength/1000;
+    cout << "The time it took to sort was: " << totalTime << " milliseconds." << endl;
 
 }
 
