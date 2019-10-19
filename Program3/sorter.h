@@ -47,11 +47,11 @@ public:
                 }
             }
         }
-//        std::cout << "Mystery Sorter A" << std::endl;
-//        for(int i = 0; i < this->data.size(); i++ ){
-//            cout << this->data[i] << ' ';
-//        }
-//        cout << endl;
+        //        std::cout << "Mystery Sorter A" << std::endl;
+        //        for(int i = 0; i < this->data.size(); i++ ){
+        //            cout << this->data[i] << ' ';
+        //        }
+        //        cout << endl;
     }
 };
 
@@ -60,28 +60,24 @@ template <typename T>
 class MysterySorterB : public Sorter<T> {
 public:
     virtual void sort() {
+        std::vector<int> vec;
+        vec = this->data;
 
-        int i, key, j;
-        for (i = 1; i < this->data.size(); i++)
+        for (auto it = vec.begin(); it != vec.end(); it++)
         {
-            key = this->data[i];
-            j = i - 1;
 
-            /* Move elements of arr[0..i-1], that are greater than key, to one position ahead
-               of their current position */
-            while (j >= 0 && this->data[j] > key)
-            {
-                this->data[j + 1] = this->data[j];
-                j = j - 1;
-            }
-            this->data[j + 1] = key;
+            auto const insertion_point =
+                    std::upper_bound(vec.begin(), it, *it);
+
+            // Shifting the unsorted part
+            std::rotate(insertion_point, it, it+1);
         }
 
-//        std::cout << "Mystery Sorter B" << std::endl;
-//        for(int i = 0; i < this->data.size(); i++ ){
-//            cout << this->data[i] << ' ';
-//        }
-//         cout << endl;
+        //        std::cout << "Mystery Sorter B" << std::endl;
+        //        for(int i = 0; i < this->data.size(); i++ ){
+        //            cout << this->data[i] << ' ';
+        //        }
+        //         cout << endl;
     }
 };
 
@@ -177,11 +173,11 @@ public:
 
             merge(this->data, l, m, r);
         }
-//        std::cout << "Mystery Sorter C" << std::endl;
-//        for(int i = 0; i < this->data.size(); i++ ){
-//            cout << this->data[i] << ' ';
-//        }
-//         cout << endl;
+        //        std::cout << "Mystery Sorter C" << std::endl;
+        //        for(int i = 0; i < this->data.size(); i++ ){
+        //            cout << this->data[i] << ' ';
+        //        }
+        //         cout << endl;
     }
 };
 
@@ -202,64 +198,98 @@ private:
         array, and places all smaller (smaller than pivot)
        to left of pivot and all greater elements to right
        of pivot */
-    int partition (vector<T> data, int low, int high)
-    {
-        int pivot = this->data[high];    // pivot
-        int i = (low - 1);  // Index of smaller element
+    //    int partition (vector<T> data, int low, int high)
+    //    {
+    //        int pivot = this->data[high];    // pivot
+    //        int i = (low - 1);  // Index of smaller element
 
-        for (int j = low; j <= high- 1; j++)
-        {
-            // If current element is smaller than or
-            // equal to pivot
-            if (this->data[j] <= pivot)
-            {
-                i++;    // increment index of smaller element
-                swap(&this->data[i], &this->data[j]);
+    //        for (int j = low; j <= high- 1; j++)
+    //        {
+    //            // If current element is smaller than or
+    //            // equal to pivot
+    //            if (this->data[j] <= pivot)
+    //            {
+    //                i++;    // increment index of smaller element
+    //                swap(&this->data[i], &this->data[j]);
+    //            }
+    //        }
+    //        swap(&this->data[i + 1], &this->data[high]);
+    //        return (i + 1);
+    //    }
+
+    //    /* The main function that implements QuickSort
+    //     arr[] --> Array to be sorted,
+    //      low  --> Starting index,
+    //      high  --> Ending index */
+    //    void quickSort(vector<T> data, int low, int high)
+    //    {
+    //        if (low < high)
+    //        {
+    //            /* pi is partitioning index, arr[p] is now
+    //               at right place */
+    //            int pi = partition(this->data, low, high);
+
+    //            // Separately sort elements before
+    //            // partition and after partition
+    //            quickSort(this->data, low, pi - 1);
+    //            quickSort(this->data, pi + 1, high);
+    //        }
+    //    }
+public:
+    int partition(std::vector<T>& data, int start, int end){
+        T pivot = data[start];
+        int pIndex = start + 1;
+        int i;
+        T temp;
+        for(i = start + 1; i <= end; i++){
+            if(data[i] < pivot){
+                temp = data[i];
+                data[i] = data[pIndex];
+                data[pIndex] = temp;
+                pIndex++;
             }
         }
-        swap(&this->data[i + 1], &this->data[high]);
-        return (i + 1);
+        temp = data[start];
+        data[start] = data[pIndex - 1];
+        data[pIndex - 1] = temp;
+        return pIndex-1;
     }
 
-    /* The main function that implements QuickSort
-     arr[] --> Array to be sorted,
-      low  --> Starting index,
-      high  --> Ending index */
-    void quickSort(vector<T> data, int low, int high)
-    {
-        if (low < high)
-        {
-            /* pi is partitioning index, arr[p] is now
-               at right place */
-            int pi = partition(this->data, low, high);
-
-            // Separately sort elements before
-            // partition and after partition
-            quickSort(this->data, low, pi - 1);
-            quickSort(this->data, pi + 1, high);
+    void QuickSort(std::vector<T> & data, int start, int end){
+        if(start < end){
+            int pIndex = partition(data, start, end);
+            QuickSort(data, start, pIndex - 1);
+            QuickSort(data, pIndex + 1, end);
         }
     }
-public:
     virtual void sort(){
-        int low = 0;
-        int high = this->data.size()-1;
-        if (low < high)
-        {
-            /* pi is partitioning index, arr[p] is now
-               at right place */
-            int pi = partition(this->data, low, high);
-
-            // Separately sort elements before
-            // partition and after partition
-            quickSort(this->data, low, pi - 1);
-            quickSort(this->data, pi + 1, high);
-        }
-//        std::cout << "Mystery Sorter D" << std::endl;
-//        for(int i = 0; i <  this->data.size(); i++ ){
-//            cout << this->data[i] << ' ';
-//        }
-//         cout << endl;
+        QuickSort(this->data, 0, this->data.size() - 1);
+        //        for(int i = 0; i < this->size; i++){
+        //            std::cout << this->data[i] << std::endl;
+        //        }
     }
+
+    //        int low = 0;
+    //        int high = this->data.size()-1;
+    //        if (low < high)
+    //        {
+    //            /* pi is partitioning index, arr[p] is now
+    //               at right place */
+    //            int pi = partition(this->data, low, high);
+
+    //            // Separately sort elements before
+    //            // partition and after partition
+    //            quickSort(this->data, low, pi - 1);
+    //            quickSort(this->data, pi + 1, high);
+    //        }
+
+
+
+    //        std::cout << "Mystery Sorter D" << std::endl;
+    //        for(int i = 0; i <  this->data.size(); i++ ){
+    //            cout << this->data[i] << ' ';
+    //        }
+    //         cout << endl;
 };
 
 //selection sort
@@ -283,11 +313,11 @@ public:
             //placing in correct position
             swapElements(&this->data[i], &this->data[imin]);
         }
-//        std::cout << "Mystery Sorter E" << std::endl;
-//        for(int i = 0; i < this->data.size(); i++ ){
-//            cout << this->data[i] << ' ';
-//        }
-//         cout << endl;
+        //        std::cout << "Mystery Sorter E" << std::endl;
+        //        for(int i = 0; i < this->data.size(); i++ ){
+        //            cout << this->data[i] << ' ';
+        //        }
+        //         cout << endl;
     }
 };
 

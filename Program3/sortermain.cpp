@@ -92,7 +92,7 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
 
     totalTime = timeLength/50.0;
 
-    sortTimes.push_back(make_pair(0,totalTime));
+    sortTimes.push_back(make_pair(1,totalTime));
     mysteryNames[1] = "MysteryB is: ";
 
     cout << "insertion took: " << totalTime << " microseconds." << endl;
