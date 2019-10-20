@@ -22,7 +22,7 @@ private:
     vector<pair<double, int>> sortTimes;
     string mysteryNames[5];
 
-    int num = 5000;
+    int num = 10000;
 
 
 public:
@@ -30,9 +30,13 @@ public:
 
     void populateMergeWorst();
 
+
+    void sortRandomValues();
     void sortAscendingValues();
     void sortDescendingValues();
     void sortEvenOddValues();
+    void sortDuplicateElements();
+    void sortReverseDuplicateElements();
 
     void populateMysteryA(vector<int> &a);
     void populateMysteryB(vector<int> &b);
@@ -42,7 +46,6 @@ public:
 
     void timeOrganizer();
     void printResults();
-    void performAverageSort();
 };
 
 

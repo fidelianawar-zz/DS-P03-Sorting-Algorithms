@@ -27,7 +27,8 @@ void sorterMain::populateMysteryA(vector<int> &Aelements){
     totalTime = timeLength/50.0;
 
     sortTimes.push_back(make_pair(totalTime,0));
-    mysteryNames[0] = "MysteryA is: ";
+    mysteryNames[0] = "mysA is: ";
+    cout << "insertion time is " << totalTime << endl;
 }
 
 //calculating the sort time for MysteryB and storing designated values of time and mysteryName
@@ -50,7 +51,8 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
     totalTime = timeLength/50.0;
 
     sortTimes.push_back(make_pair(totalTime,1));
-    mysteryNames[1] = "MysteryB is: ";
+    mysteryNames[1] = "mysB is: ";
+    cout << "bubble time is " << totalTime << endl;
 
 }
 
@@ -73,7 +75,8 @@ void sorterMain::populateMysteryC(vector<int> &Celements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,2));
-    mysteryNames[2] = "MysteryC is: ";
+    mysteryNames[2] = "mysC is: ";
+    cout << "selection time is " << totalTime << endl;
 }
 
 //calculating the sort time for MysteryD and storing designated values of time and mysteryName
@@ -95,7 +98,8 @@ void sorterMain::populateMysteryD(vector<int> &Delements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,3));
-    mysteryNames[3] = "MysteryD is: ";
+    mysteryNames[3] = "mysD is: ";
+    cout << "quick time is " << totalTime << endl;
 }
 
 //calculating the sort time for MysteryE and storing designated values of time and mysteryName
@@ -117,13 +121,19 @@ void sorterMain::populateMysteryE(vector<int> &Eelements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,4));
-    mysteryNames[4] = "MysteryE is: ";
+    mysteryNames[4] = "mysE is: ";
+    cout << "merge time is " << totalTime << endl;
 }
 
 //organizing sortTimes vector pair to be in order
 void sorterMain::timeOrganizer(){
+
     sort(sortTimes.begin(), sortTimes.end());
-    printResults();
+    for(unsigned int i = 0; i < sortTimes.size(); i++){
+        cout << mysteryNames[i] << " " << sortTimes[i].first << " " << sortTimes[i].second << endl;
+
+    }
+    //printResults();
 }
 
 //printing results based up order in sortTimes
@@ -157,19 +167,19 @@ sorterMain::sorterMain()
 }
 
 //average case with random elements
-void sorterMain::performAverageSort(){
+void sorterMain::sortRandomValues(){
 
-    vector<int> populateAverageVector;
+    vector<int> testVec;
 
     for(int i = 0; i < num; i++){
-        populateAverageVector.push_back(((rand()%100)+1));
+        testVec.push_back(((rand()%100)+1));
     }
 
-    populateMysteryA(populateAverageVector);
-    populateMysteryB(populateAverageVector);
-    populateMysteryC(populateAverageVector);
-    populateMysteryD(populateAverageVector);
-    populateMysteryE(populateAverageVector);
+    populateMysteryA(testVec);
+    populateMysteryB(testVec);
+    populateMysteryC(testVec);
+    populateMysteryD(testVec);
+    populateMysteryE(testVec);
 
     timeOrganizer();
 }
@@ -177,17 +187,17 @@ void sorterMain::performAverageSort(){
 //scenario with elements in vector in ascending order
 void sorterMain::sortAscendingValues(){
 
-    vector<int> populateVec;
+    vector<int> testVec;
 
     for(int i = 0; i < num; i++){
-        populateVec.push_back(i);
+        testVec.push_back(i);
     }
 
-    populateMysteryA(populateVec);
-    populateMysteryB(populateVec);
-    populateMysteryC(populateVec);
-    populateMysteryD(populateVec);
-    populateMysteryE(populateVec);
+    populateMysteryA(testVec);
+    populateMysteryB(testVec);
+    populateMysteryC(testVec);
+    populateMysteryD(testVec);
+    populateMysteryE(testVec);
 
     timeOrganizer();
 
@@ -203,19 +213,19 @@ void sorterMain::sortAscendingValues(){
 //elements in vector in descending order
 void sorterMain::sortDescendingValues(){
 
-    vector<int> populateVec;
+    vector<int> testVec;
 
     for(int i = 0; i < num; i++){
-        populateVec.push_back(i);
+        testVec.push_back(i);
     }
 
-    reverse(populateVec.begin(),populateVec.end());
+    reverse(testVec.begin(),testVec.end());
 
-    populateMysteryA(populateVec);
-    populateMysteryB(populateVec);
-    populateMysteryC(populateVec);
-    populateMysteryD(populateVec);
-    populateMysteryE(populateVec);
+    populateMysteryA(testVec);
+    populateMysteryB(testVec);
+    populateMysteryC(testVec);
+    populateMysteryD(testVec);
+    populateMysteryE(testVec);
 
     timeOrganizer();
 
@@ -231,20 +241,60 @@ void sorterMain::sortDescendingValues(){
 //elements with every other element being even/odd
 void sorterMain::sortEvenOddValues(){
 
-    vector<int> populateAverageVector;
+    vector<int> testVec;
 
     for(int i = 0; i < num; i+=2){
-        populateAverageVector.push_back(i);
+        testVec.push_back(i);
     }
     for(int i = 1; i < num; i+=2){
-        populateAverageVector.push_back(i);
+        testVec.push_back(i);
     }
 
-    populateMysteryA(populateAverageVector);
-    populateMysteryB(populateAverageVector);
-    populateMysteryC(populateAverageVector);
-    populateMysteryD(populateAverageVector);
-    populateMysteryE(populateAverageVector);
+    populateMysteryA(testVec);
+    populateMysteryB(testVec);
+    populateMysteryC(testVec);
+    populateMysteryD(testVec);
+    populateMysteryE(testVec);
+
+    timeOrganizer();
+}
+
+//elements with duplicate values
+void sorterMain::sortDuplicateElements(){
+
+    vector<int> testVec;
+
+    for(int i = 0; i < num; i+=2){
+        testVec.push_back(i);
+        testVec.push_back(i);
+    }
+
+    populateMysteryA(testVec);
+    populateMysteryB(testVec);
+    populateMysteryC(testVec);
+    populateMysteryD(testVec);
+    populateMysteryE(testVec);
+
+    timeOrganizer();
+}
+
+//elements with duplicate values
+void sorterMain::sortReverseDuplicateElements(){
+
+    vector<int> testVec;
+
+    for(int i = 0; i < num; i+=2){
+        testVec.push_back(i);
+        testVec.push_back(i);
+    }
+
+    reverse(testVec.begin(),testVec.end());
+
+    populateMysteryA(testVec);
+    populateMysteryB(testVec);
+    populateMysteryC(testVec);
+    populateMysteryD(testVec);
+    populateMysteryE(testVec);
 
     timeOrganizer();
 }
