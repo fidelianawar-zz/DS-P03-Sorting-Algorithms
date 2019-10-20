@@ -19,12 +19,14 @@ private:
 
     //vector of pairs
     //first element: index 0-5 to represent sorts, second element: sort time
-    vector<pair<double, int>> sortTimesA;
+    vector<pair<double, int>> sortTimes;
     vector<pair<double, int>> sortTimesA;
     vector<pair<double, int>> sortTimesB;
     vector<pair<double, int>> sortTimesC;
     vector<pair<double, int>> sortTimesD;
     vector<pair<double, int>> sortTimesE;
+
+    vector<vector<pair<double, int>>> totalInformation;
 
 
     string mysteryNames[5];
@@ -52,7 +54,8 @@ public:
     void populateMysteryE(vector<int> &e);
 
     void timeOrganizer();
-    void storeResults();
+    void analyzeResults();
+    void clearVectors();
 };
 
 

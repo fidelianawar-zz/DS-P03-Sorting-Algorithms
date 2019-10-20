@@ -130,38 +130,41 @@ void sorterMain::timeOrganizer(){
 
     sort(sortTimes.begin(), sortTimes.end());
 
-//    sort(sortTimesA.begin(), sortTimesA.end());
-//    sort(sortTimesB.begin(), sortTimesB.end());
-//    sort(sortTimesC.begin(), sortTimesC.end());
-//    sort(sortTimesD.begin(), sortTimesD.end());
-//    sort(sortTimesE.begin(), sortTimesE.end());
-
 //    for(unsigned int i = 0; i < sortTimes.size(); i++){
 //       cout << sortTimes[i].first << " " << sortTimes[i].second << endl;
 
 //    }
-    storeResults();
+    analyzeResults();
+}
+
+void sorterMain::clearVectors(){
+    totalInformation.clear();
+    sortTimesA.clear();
+    sortTimesB.clear();
+    sortTimesC.clear();
+    sortTimesD.clear();
+    sortTimesE.clear();
 }
 
 //printing results based up order in sortTimes
-void sorterMain::storeResults(){
+void sorterMain::analyzeResults(){
     for(int i = 0; i < 5; i++){
         cout << mysteryNames[i];
         for(unsigned int j = 0; j < 5; j++){
             if(sortTimes[j].second == i){
-                if(j == 0){
+                if(j == 2){
                     cout << "Insertion sort." << endl;
                 }
-                else if(j == 1){
+                else if(j == 4){
                     cout << "Bubble sort." << endl;
                 }
-                else if(j == 2){
+                else if(j == 3){
                     cout << "Selection sort." << endl;
                 }
-                else if(j == 3){
+                else if(j == 0){
                     cout << "Quick sort." << endl;
                 }
-                else if(j == 4){
+                else if(j == 1){
                     cout << "Merge sort." << endl;
                 }
             }
@@ -189,6 +192,14 @@ void sorterMain::sortRandomValues(){
     populateMysteryE(testVec);
 
     timeOrganizer();
+
+    totalInformation.push_back(sortTimesA);
+    totalInformation.push_back(sortTimesB);
+    totalInformation.push_back(sortTimesC);
+    totalInformation.push_back(sortTimesD);
+    totalInformation.push_back(sortTimesE);
+
+
 }
 
 //scenario with elements in vector in ascending order
