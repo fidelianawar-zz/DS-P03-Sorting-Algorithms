@@ -27,7 +27,7 @@ void sorterMain::populateMysteryA(vector<int> &Aelements){
     totalTime = timeLength/50.0;
 
     sortTimes.push_back(make_pair(totalTime,0));
-    mysteryNames[0] = "mysA is: ";
+    mysteryNames[0] = "Mystery A is: ";
     cout << "insertion time is " << totalTime << endl;
 }
 
@@ -51,7 +51,7 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
     totalTime = timeLength/50.0;
 
     sortTimes.push_back(make_pair(totalTime,1));
-    mysteryNames[1] = "mysB is: ";
+    mysteryNames[1] = "Mystery B is: ";
     cout << "bubble time is " << totalTime << endl;
 
 }
@@ -75,7 +75,7 @@ void sorterMain::populateMysteryC(vector<int> &Celements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,2));
-    mysteryNames[2] = "mysC is: ";
+    mysteryNames[2] = "Mystery C is: ";
     cout << "selection time is " << totalTime << endl;
 }
 
@@ -98,7 +98,7 @@ void sorterMain::populateMysteryD(vector<int> &Delements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,3));
-    mysteryNames[3] = "mysD is: ";
+    mysteryNames[3] = "Mystery D is: ";
     cout << "quick time is " << totalTime << endl;
 }
 
@@ -121,7 +121,7 @@ void sorterMain::populateMysteryE(vector<int> &Eelements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,4));
-    mysteryNames[4] = "mysE is: ";
+    mysteryNames[4] = "Mystery E is: ";
     cout << "merge time is " << totalTime << endl;
 }
 
@@ -129,33 +129,40 @@ void sorterMain::populateMysteryE(vector<int> &Eelements){
 void sorterMain::timeOrganizer(){
 
     sort(sortTimes.begin(), sortTimes.end());
-    for(unsigned int i = 0; i < sortTimes.size(); i++){
-        cout << mysteryNames[i] << " " << sortTimes[i].first << " " << sortTimes[i].second << endl;
 
-    }
-    //printResults();
+//    sort(sortTimesA.begin(), sortTimesA.end());
+//    sort(sortTimesB.begin(), sortTimesB.end());
+//    sort(sortTimesC.begin(), sortTimesC.end());
+//    sort(sortTimesD.begin(), sortTimesD.end());
+//    sort(sortTimesE.begin(), sortTimesE.end());
+
+//    for(unsigned int i = 0; i < sortTimes.size(); i++){
+//       cout << sortTimes[i].first << " " << sortTimes[i].second << endl;
+
+//    }
+    storeResults();
 }
 
 //printing results based up order in sortTimes
-void sorterMain::printResults(){
+void sorterMain::storeResults(){
     for(int i = 0; i < 5; i++){
         cout << mysteryNames[i];
         for(unsigned int j = 0; j < 5; j++){
             if(sortTimes[j].second == i){
                 if(j == 0){
-                    cout << "Quick sort." << endl;
-                }
-                else if(j == 1){
-                    cout << "Merge sort." << endl;
-                }
-                else if(j == 2){
                     cout << "Insertion sort." << endl;
                 }
-                else if(j == 3){
+                else if(j == 1){
+                    cout << "Bubble sort." << endl;
+                }
+                else if(j == 2){
                     cout << "Selection sort." << endl;
                 }
+                else if(j == 3){
+                    cout << "Quick sort." << endl;
+                }
                 else if(j == 4){
-                    cout << "Bubble sort." << endl;
+                    cout << "Merge sort." << endl;
                 }
             }
         }
@@ -201,13 +208,6 @@ void sorterMain::sortAscendingValues(){
 
     timeOrganizer();
 
-    double longestTime = 0.0;
-    for(unsigned int i = 0; i < sortTimes.size(); i++){
-        if(sortTimes[i].second > longestTime){
-            longestTime = sortTimes[i].second;
-        }
-    }
-
 }
 
 //elements in vector in descending order
@@ -229,12 +229,12 @@ void sorterMain::sortDescendingValues(){
 
     timeOrganizer();
 
-    double longestTime = 0.0;
-    for(unsigned int i = 0; i < sortTimes.size(); i++){
-        if(sortTimes[i].second > longestTime){
-            longestTime = sortTimes[i].second;
-        }
-    }
+//    double longestTime = 0.0;
+//    for(unsigned int i = 0; i < sortTimes.size(); i++){
+//        if(sortTimes[i].second > longestTime){
+//            longestTime = sortTimes[i].second;
+//        }
+//    }
 
 }
 

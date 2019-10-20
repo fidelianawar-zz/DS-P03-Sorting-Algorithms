@@ -30,8 +30,8 @@ int main()
 
 //    cout << endl;
 
-//    cout<<"The times of sort duplicates are: " << endl;
-//    sorterObject.sortDuplicateElements();
+    cout<<"The times of sort duplicates are: " << endl;
+    sorterObject.sortDuplicateElements();
 
 //    cout << endl;
 
