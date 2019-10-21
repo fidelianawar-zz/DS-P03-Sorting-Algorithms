@@ -152,7 +152,7 @@ void sorterMain::analyzeResults(){
         cout << mysteryNames[i];
         for(unsigned int j = 0; j < 5; j++){
             if(sortTimes[j].second == i){
-                if(j == 2){
+                if(j == 0){
                     cout << "Insertion sort." << endl;
                 }
                 else if(j == 4){
@@ -161,10 +161,10 @@ void sorterMain::analyzeResults(){
                 else if(j == 3){
                     cout << "Selection sort." << endl;
                 }
-                else if(j == 0){
+                else if(j == 1){
                     cout << "Quick sort." << endl;
                 }
-                else if(j == 1){
+                else if(j == 2){
                     cout << "Merge sort." << endl;
                 }
             }
