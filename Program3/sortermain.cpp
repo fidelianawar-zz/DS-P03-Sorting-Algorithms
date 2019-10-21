@@ -4,6 +4,7 @@
 #include <vector>
 #include <chrono>
 #include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std::chrono;
 
@@ -27,7 +28,7 @@ void sorterMain::populateMysteryA(vector<int> &Aelements){
     totalTime = timeLength/50.0;
 
     sortTimes.push_back(make_pair(totalTime,0));
-    mysteryNames[0] = "Mystery A is: ";
+    mysteryNames[0] = "MysterySortA is ";
     cout << "quick time is " << totalTime << endl;
 }
 
@@ -51,7 +52,7 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
     totalTime = timeLength/50.0;
 
     sortTimes.push_back(make_pair(totalTime,1));
-    mysteryNames[1] = "Mystery B is: ";
+    mysteryNames[1] = "MysterySortB is: ";
     cout << "selection time is " << totalTime << endl;
 
 }
@@ -75,7 +76,7 @@ void sorterMain::populateMysteryC(vector<int> &Celements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,2));
-    mysteryNames[2] = "Mystery C is: ";
+    mysteryNames[2] = "MysterySortC is: ";
     cout << "insertion time is " << totalTime << endl;
 }
 
@@ -98,7 +99,7 @@ void sorterMain::populateMysteryD(vector<int> &Delements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,3));
-    mysteryNames[3] = "Mystery D is: ";
+    mysteryNames[3] = "MysterySortD is: ";
     cout << "bubble time is " << totalTime << endl;
 }
 
@@ -121,7 +122,7 @@ void sorterMain::populateMysteryE(vector<int> &Eelements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,4));
-    mysteryNames[4] = "Mystery E is: ";
+    mysteryNames[4] = "MysterySortE is: ";
     cout << "merge time is " << totalTime << endl;
 }
 
@@ -135,54 +136,11 @@ void sorterMain::timeOrganizer(){
 
 void sorterMain::organizeMysteryNames(){
 
-    //cout << endl << "we made it inside organize mystery names function" << endl << endl;
-
-//    cout << "the elements of random test are: ";
-//    for(unsigned int i = 0; i < randomTest.size(); i++){
-//        cout << randomTest[i] << " ";
-//    }
-//    cout <<endl;
-
-//    cout << "the elements of ascending test are: ";
-//    for(unsigned int i = 0; i < ascendingTest.size(); i++){
-//        cout << ascendingTest[i] << " ";
-//    }
-//    cout <<endl;
-
-//    cout << "the elements of descending test are: ";
-//    for(unsigned int i = 0; i < descendingTest.size(); i++){
-//        cout << descendingTest[i] << " ";
-//    }
-//    cout <<endl;
-
-//    cout << "the elements of duplicate test are: ";
-//    for(unsigned int i = 0; i < duplicateTest.size(); i++){
-//        cout << duplicateTest[i] << " ";
-//    }
-//    cout <<endl;
-
-//    cout << "the elements of almost sorted test are: ";
-//    for(unsigned int i = 0; i < almostSortedTest.size(); i++){
-//        cout << almostSortedTest[i] << " ";
-//    }
-//    cout <<endl;
-
     mysteryNamesVector.push_back(randomTest);
     mysteryNamesVector.push_back(ascendingTest);
     mysteryNamesVector.push_back(descendingTest);
     mysteryNamesVector.push_back(duplicateTest);
     mysteryNamesVector.push_back(almostSortedTest);
-
-//    for(vector<vector<int>>::size_type i = 0; i < mysteryNamesVector.size(); i++){
-//        for(vector<vector<int>>::size_type j = 0; j < mysteryNamesVector[i].size(); j++){
-//            cout << mysteryNamesVector[i][j] << " ";
-//        }
-//        cout << endl;
-//    }
-
-//    for(unsigned int i = 0; i < mysteryNamesVector.size(); i++){
-//        resultsA.push_back(mysteryNamesVector[i][0]);
-//    }
 
     for(vector<vector<int>>::size_type i = 0; i < mysteryNamesVector.size(); i++){
         resultsA.push_back(mysteryNamesVector[i][0]);
@@ -191,31 +149,53 @@ void sorterMain::organizeMysteryNames(){
         resultsD.push_back(mysteryNamesVector[i][3]);
         resultsE.push_back(mysteryNamesVector[i][4]);
     }
-    for(unsigned int i = 0; i < resultsA.size(); i++){
-        cout << resultsA[i] << ' ';
-    }
-    cout << endl;
-    for(unsigned int i = 0; i < resultsB.size(); i++){
-        cout << resultsB[i] << ' ';
-    }
-    cout << endl;
-    for(unsigned int i = 0; i < resultsC.size(); i++){
-        cout << resultsC[i] << ' ';
-    }
-    cout << endl;
-    for(unsigned int i = 0; i < resultsD.size(); i++){
-        cout << resultsD[i] << ' ';
-    }
-    cout << endl;
-    for(unsigned int i = 0; i < resultsE.size(); i++){
-        cout << resultsE[i] << ' ';
-    }
-    cout << endl;
 
-//    cout << "the elements of resultsA vector are: " << endl;
-//    for(unsigned int i = 0; i <resultsA.size(); i++){
-//        cout << resultsA[i] << " ";
-//    }
+   string a = determineFinal(resultsA);
+   string b = determineFinal(resultsB);
+   string c = determineFinal(resultsC);
+   string d = determineFinal(resultsD);
+   string e = determineFinal(resultsE);
+
+   for(unsigned int i = 0; i < 5; i++){
+       cout << mysteryNames[i] << " ";
+       if(i == 0){
+            cout << a << endl;
+       }
+       if(i == 1){
+            cout << b << endl;
+       }
+       if(i == 2){
+            cout << c << endl;
+       }
+       if(i == 3){
+            cout << d << endl;
+       }
+       if(i == 4){
+            cout << e << endl;
+       }
+
+   }
+}
+
+string sorterMain::determineFinal(vector<string>& resultsMystery){
+
+    cout << "we made it into determine final" << endl << endl;
+    unordered_map<string, int> frequency;
+    int counter = 0;
+    string finalResult = "";
+
+    for (unsigned int i = 0; i < resultsMystery.size(); i++){
+        frequency[resultsMystery[i]]++;
+    }
+
+    for (auto i : frequency) {
+        if (counter < i.second) {
+            finalResult = i.first;
+            counter = i.second;
+        }
+    }
+
+    return finalResult;
 }
 //printing results based up order in sortTimes
 void sorterMain::analyzeResults(int testNum){
@@ -227,23 +207,23 @@ void sorterMain::analyzeResults(int testNum){
                 if(sortTimes[j].second == i){
                     if(j == 0){
                         //cout << "Insertion sort." << endl;
-                        randomTest.push_back("Insertion");
+                        randomTest.push_back("InsertionSort");
                     }
                     else if(j == 4){
                         //cout << "Bubble sort." << endl;
-                        randomTest.push_back("Bubble");
+                        randomTest.push_back("BubbleSort");
                     }
                     else if(j == 3){
                         //cout << "Selection sort." << endl;
-                        randomTest.push_back("Selection");
+                        randomTest.push_back("SelectionSort");
                     }
                     else if(j == 1){
                         //cout << "Quick sort." << endl;
-                        randomTest.push_back("Quick");
+                        randomTest.push_back("QuickSort");
                     }
                     else if(j == 2){
                         //cout << "Merge sort." << endl;
-                        randomTest.push_back("Merge");
+                        randomTest.push_back("MergeSort");
                     }
                 }
             }
@@ -257,30 +237,27 @@ void sorterMain::analyzeResults(int testNum){
                 if(sortTimes[j].second == i){
                     if(j == 0){
                         //cout << "Bubble sort." << endl;
-                        ascendingTest.push_back("Bubble");
+                        ascendingTest.push_back("BubbleSort");
                     }
                     else if(j == 1){
                         //cout << "Insertion sort." << endl;
-                        ascendingTest.push_back("Insertion");
+                        ascendingTest.push_back("InsertionSort");
                     }
                     else if(j == 2){
                         //cout << "Merge sort." << endl;
-                        ascendingTest.push_back("Merge");
+                        ascendingTest.push_back("MergeSort");
                     }
                     else if(j == 3){
                         //cout << "Quick sort." << endl;
-                        ascendingTest.push_back("Quick");
+                        ascendingTest.push_back("QuickSort");
                     }
                     else if(j == 4){
                         //cout << "Selection sort." << endl;
-                        ascendingTest.push_back("Selection");
+                        ascendingTest.push_back("SelectionSort");
                     }
                 }
             }
         }
-//        for(unsigned int i = 0; i < ascendingTest.size(); i++){
-//            cout << ascendingTest[i] << " ";
-//        }
     }
 
     else if(testNum == 3){
@@ -290,23 +267,23 @@ void sorterMain::analyzeResults(int testNum){
                 if(sortTimes[j].second == i){
                     if(j == 0){
                         //cout << "Insertion sort." << endl;
-                        descendingTest.push_back("Insertion");
+                        descendingTest.push_back("InsertionSort");
                     }
                     else if(j == 1){
                         //cout << "Merge sort." << endl;
-                        descendingTest.push_back("Merge");
+                        descendingTest.push_back("MergeSort");
                     }
                     else if(j == 2){
                         //cout << "Quick sort." << endl;
-                        descendingTest.push_back("Quick");
+                        descendingTest.push_back("QuickSort");
                     }
                     else if(j == 3){
                         //cout << "Selection sort." << endl;
-                        descendingTest.push_back("Selection");
+                        descendingTest.push_back("SelectionSort");
                     }
                     else if(j == 4){
                         // cout << "Bubble sort." << endl;
-                        descendingTest.push_back("Bubble");
+                        descendingTest.push_back("BubbleSort");
                     }
                 }
             }
@@ -320,23 +297,23 @@ void sorterMain::analyzeResults(int testNum){
                 if(sortTimes[j].second == i){
                     if(j == 0){
                         //cout << "Bubble sort." << endl;
-                        duplicateTest.push_back("Bubble");
+                        duplicateTest.push_back("BubbleSort");
                     }
                     else if(j == 1){
                         //cout << "Insertion sort." << endl;
-                        duplicateTest.push_back("Insertion");
+                        duplicateTest.push_back("InsertionSort");
                     }
                     else if(j == 2){
                         //cout << "Merge sort." << endl;
-                        duplicateTest.push_back("Merge");
+                        duplicateTest.push_back("MergeSort");
                     }
                     else if(j == 3){
                         //cout << "Quick sort." << endl;
-                        duplicateTest.push_back("Quick");
+                        duplicateTest.push_back("QuickSort");
                     }
                     else if(j == 4){
                         //cout << "Selection sort." << endl;
-                        duplicateTest.push_back("Selection");
+                        duplicateTest.push_back("SelectionSort");
                     }
                 }
             }
@@ -350,31 +327,29 @@ void sorterMain::analyzeResults(int testNum){
                 if(sortTimes[j].second == i){
                     if(j == 0){
                         //cout << "Insertion sort." << endl;
-                        almostSortedTest.push_back("Insertion");
+                        almostSortedTest.push_back("InsertionSort");
                     }
                     else if(j == 4){
                         //cout << "Bubble sort." << endl;
-                        almostSortedTest.push_back("Bubble");
+                        almostSortedTest.push_back("BubbleSort");
                     }
                     else if(j == 3){
                         //cout << "Selection sort." << endl;
-                        almostSortedTest.push_back("Selection");
+                        almostSortedTest.push_back("SelectionSort");
                     }
                     else if(j == 1){
                         //cout << "Quick sort." << endl;
-                        almostSortedTest.push_back("Quick");
+                        almostSortedTest.push_back("QuickSort");
                     }
                     else if(j == 2){
                         //cout << "Merge sort." << endl;
-                        almostSortedTest.push_back("Merge");
+                        almostSortedTest.push_back("MergeSort");
                     }
                 }
             }
         }
     }
-
     sortTimes.clear();
-
 }
 
 sorterMain::sorterMain()
@@ -441,13 +416,6 @@ void sorterMain::sortDescendingValues(){
 
     timeOrganizer();
     analyzeResults(3);
-
-    //    double longestTime = 0.0;
-    //    for(unsigned int i = 0; i < sortTimes.size(); i++){
-    //        if(sortTimes[i].second > longestTime){
-    //            longestTime = sortTimes[i].second;
-    //        }
-    //    }
 
 }
 

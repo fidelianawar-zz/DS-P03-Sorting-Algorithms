@@ -34,7 +34,7 @@ private:
 
     string mysteryNames[5];
 
-    int num = 1000;
+    int num = 6000;
 
 
 public:
@@ -62,7 +62,7 @@ public:
     void timeOrganizer();
     void analyzeResults(int);
     void organizeMysteryNames();
-    void finalResults();
+    string determineFinal(vector<string> &);
 };
 
 
