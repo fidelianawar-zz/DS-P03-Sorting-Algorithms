@@ -28,13 +28,13 @@ private:
     vector<string> randomTest,  descendingTest, duplicateTest, almostSortedTest;
 
 
-    vector<string> resultsA, resultsB, resultsC, restultsD, resultsE;
+    vector<string> resultsA, resultsB, resultsC, resultsD, resultsE;
 
     vector<vector<string>> mysteryNamesVector;
 
     string mysteryNames[5];
 
-    int num = 6000;
+    int num = 1000;
 
 
 public:

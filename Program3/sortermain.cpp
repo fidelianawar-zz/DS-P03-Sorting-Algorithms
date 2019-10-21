@@ -173,9 +173,44 @@ void sorterMain::organizeMysteryNames(){
     mysteryNamesVector.push_back(duplicateTest);
     mysteryNamesVector.push_back(almostSortedTest);
 
+//    for(vector<vector<int>>::size_type i = 0; i < mysteryNamesVector.size(); i++){
+//        for(vector<vector<int>>::size_type j = 0; j < mysteryNamesVector[i].size(); j++){
+//            cout << mysteryNamesVector[i][j] << " ";
+//        }
+//        cout << endl;
+//    }
+
 //    for(unsigned int i = 0; i < mysteryNamesVector.size(); i++){
 //        resultsA.push_back(mysteryNamesVector[i][0]);
 //    }
+
+    for(vector<vector<int>>::size_type i = 0; i < mysteryNamesVector.size(); i++){
+        resultsA.push_back(mysteryNamesVector[i][0]);
+        resultsB.push_back(mysteryNamesVector[i][1]);
+        resultsC.push_back(mysteryNamesVector[i][2]);
+        resultsD.push_back(mysteryNamesVector[i][3]);
+        resultsE.push_back(mysteryNamesVector[i][4]);
+    }
+    for(unsigned int i = 0; i < resultsA.size(); i++){
+        cout << resultsA[i] << ' ';
+    }
+    cout << endl;
+    for(unsigned int i = 0; i < resultsB.size(); i++){
+        cout << resultsB[i] << ' ';
+    }
+    cout << endl;
+    for(unsigned int i = 0; i < resultsC.size(); i++){
+        cout << resultsC[i] << ' ';
+    }
+    cout << endl;
+    for(unsigned int i = 0; i < resultsD.size(); i++){
+        cout << resultsD[i] << ' ';
+    }
+    cout << endl;
+    for(unsigned int i = 0; i < resultsE.size(); i++){
+        cout << resultsE[i] << ' ';
+    }
+    cout << endl;
 
 //    cout << "the elements of resultsA vector are: " << endl;
 //    for(unsigned int i = 0; i <resultsA.size(); i++){
@@ -392,7 +427,7 @@ void sorterMain::sortDescendingValues(){
 
     vector<int> testVec;
 
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < num; i++){
         testVec.push_back(i);
     }
 
