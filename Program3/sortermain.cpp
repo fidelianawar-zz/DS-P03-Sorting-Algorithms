@@ -135,11 +135,37 @@ void sorterMain::timeOrganizer(){
 
 void sorterMain::organizeMysteryNames(){
 
-    cout << endl << "we made it inside organize mystery names function" << endl << endl;
+    //cout << endl << "we made it inside organize mystery names function" << endl << endl;
 
-    for(unsigned int i = 0; i < ascendingTest.size(); i++){
-        cout << ascendingTest[i] << " ";
-    }
+//    cout << "the elements of random test are: ";
+//    for(unsigned int i = 0; i < randomTest.size(); i++){
+//        cout << randomTest[i] << " ";
+//    }
+//    cout <<endl;
+
+//    cout << "the elements of ascending test are: ";
+//    for(unsigned int i = 0; i < ascendingTest.size(); i++){
+//        cout << ascendingTest[i] << " ";
+//    }
+//    cout <<endl;
+
+//    cout << "the elements of descending test are: ";
+//    for(unsigned int i = 0; i < descendingTest.size(); i++){
+//        cout << descendingTest[i] << " ";
+//    }
+//    cout <<endl;
+
+//    cout << "the elements of duplicate test are: ";
+//    for(unsigned int i = 0; i < duplicateTest.size(); i++){
+//        cout << duplicateTest[i] << " ";
+//    }
+//    cout <<endl;
+
+//    cout << "the elements of almost sorted test are: ";
+//    for(unsigned int i = 0; i < almostSortedTest.size(); i++){
+//        cout << almostSortedTest[i] << " ";
+//    }
+//    cout <<endl;
 
     mysteryNamesVector.push_back(randomTest);
     mysteryNamesVector.push_back(ascendingTest);
@@ -366,7 +392,7 @@ void sorterMain::sortDescendingValues(){
 
     vector<int> testVec;
 
-    for(int i = 0; i < num; i++){
+    for(int i = 0; i < 5; i++){
         testVec.push_back(i);
     }
 

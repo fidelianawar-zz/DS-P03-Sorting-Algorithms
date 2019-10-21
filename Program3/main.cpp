@@ -32,7 +32,7 @@ int main()
     cout<<"The times of sort of almost sorted are: " << endl;
     sorterObject.sortAlmostSorted();
 
-    //sorterObject.organizeMysteryNames();
+    sorterObject.organizeMysteryNames();
 
     return 1;
 
