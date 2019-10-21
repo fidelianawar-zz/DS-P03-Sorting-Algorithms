@@ -16,7 +16,6 @@ private:
 
     vector<int> elementsC;
 
-
     //vector of pairs
     //first element: index 0-5 to represent sorts, second element: sort time
     vector<pair<double, int>> sortTimes;
@@ -26,7 +25,12 @@ private:
     vector<pair<double, int>> sortTimesD;
     vector<pair<double, int>> sortTimesE;
 
-    vector<string> randomTest, ascendingTest, descendingTest, duplicateTest, almostSortedTest;
+    vector<string> randomTest,  descendingTest, duplicateTest, almostSortedTest;
+
+
+    vector<string> resultsA, resultsB, resultsC, restultsD, resultsE;
+
+    vector<vector<string>> mysteryNamesVector;
 
     string mysteryNames[5];
 
@@ -35,6 +39,8 @@ private:
 
 public:
     sorterMain();
+
+    vector<string> ascendingTest;
 
     void populateMergeWorst();
 
@@ -55,6 +61,7 @@ public:
 
     void timeOrganizer();
     void analyzeResults(int);
+    void organizeMysteryNames();
     void finalResults();
 };
 

@@ -133,123 +133,179 @@ void sorterMain::timeOrganizer(){
     }
 }
 
+void sorterMain::organizeMysteryNames(){
+
+    cout << endl << "we made it inside organize mystery names function" << endl << endl;
+
+    for(unsigned int i = 0; i < ascendingTest.size(); i++){
+        cout << ascendingTest[i] << " ";
+    }
+
+    mysteryNamesVector.push_back(randomTest);
+    mysteryNamesVector.push_back(ascendingTest);
+    mysteryNamesVector.push_back(descendingTest);
+    mysteryNamesVector.push_back(duplicateTest);
+    mysteryNamesVector.push_back(almostSortedTest);
+
+//    for(unsigned int i = 0; i < mysteryNamesVector.size(); i++){
+//        resultsA.push_back(mysteryNamesVector[i][0]);
+//    }
+
+//    cout << "the elements of resultsA vector are: " << endl;
+//    for(unsigned int i = 0; i <resultsA.size(); i++){
+//        cout << resultsA[i] << " ";
+//    }
+}
 //printing results based up order in sortTimes
 void sorterMain::analyzeResults(int testNum){
+
     if(testNum == 1){
         for(int i = 0; i < 5; i++){
-            cout << mysteryNames[i];
+            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        cout << "Insertion sort." << endl;
+                        //cout << "Insertion sort." << endl;
+                        randomTest.push_back("Insertion");
                     }
                     else if(j == 4){
-                        cout << "Bubble sort." << endl;
+                        //cout << "Bubble sort." << endl;
+                        randomTest.push_back("Bubble");
                     }
                     else if(j == 3){
-                        cout << "Selection sort." << endl;
+                        //cout << "Selection sort." << endl;
+                        randomTest.push_back("Selection");
                     }
                     else if(j == 1){
-                        cout << "Quick sort." << endl;
+                        //cout << "Quick sort." << endl;
+                        randomTest.push_back("Quick");
                     }
                     else if(j == 2){
-                        cout << "Merge sort." << endl;
+                        //cout << "Merge sort." << endl;
+                        randomTest.push_back("Merge");
                     }
                 }
             }
         }
     }
-    else if(testNum == 2 || testNum == 4){
+
+    else if(testNum == 2){
         for(int i = 0; i < 5; i++){
-            cout << mysteryNames[i];
+            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        cout << "Bubble sort." << endl;
+                        //cout << "Bubble sort." << endl;
+                        ascendingTest.push_back("Bubble");
                     }
                     else if(j == 1){
-                        cout << "Insertion sort." << endl;
+                        //cout << "Insertion sort." << endl;
+                        ascendingTest.push_back("Insertion");
                     }
                     else if(j == 2){
-                        cout << "Merge sort." << endl;
+                        //cout << "Merge sort." << endl;
+                        ascendingTest.push_back("Merge");
                     }
                     else if(j == 3){
-                        cout << "Quick sort." << endl;
+                        //cout << "Quick sort." << endl;
+                        ascendingTest.push_back("Quick");
                     }
                     else if(j == 4){
-                        cout << "Selection sort." << endl;
+                        //cout << "Selection sort." << endl;
+                        ascendingTest.push_back("Selection");
                     }
                 }
             }
         }
+//        for(unsigned int i = 0; i < ascendingTest.size(); i++){
+//            cout << ascendingTest[i] << " ";
+//        }
     }
+
     else if(testNum == 3){
         for(int i = 0; i < 5; i++){
-            cout << mysteryNames[i];
+            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        cout << "Insertion sort." << endl;
+                        //cout << "Insertion sort." << endl;
+                        descendingTest.push_back("Insertion");
                     }
                     else if(j == 1){
-                        cout << "Merge sort." << endl;
+                        //cout << "Merge sort." << endl;
+                        descendingTest.push_back("Merge");
                     }
                     else if(j == 2){
-                        cout << "Quick sort." << endl;
+                        //cout << "Quick sort." << endl;
+                        descendingTest.push_back("Quick");
                     }
                     else if(j == 3){
-                        cout << "Selection sort." << endl;
+                        //cout << "Selection sort." << endl;
+                        descendingTest.push_back("Selection");
                     }
                     else if(j == 4){
-                        cout << "Bubble sort." << endl;
+                        // cout << "Bubble sort." << endl;
+                        descendingTest.push_back("Bubble");
                     }
                 }
             }
         }
     }
+
     else if(testNum == 4){
         for(int i = 0; i < 5; i++){
-            cout << mysteryNames[i];
+            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        cout << "Bubble sort." << endl;
+                        //cout << "Bubble sort." << endl;
+                        duplicateTest.push_back("Bubble");
                     }
                     else if(j == 1){
-                        cout << "Insertion sort." << endl;
+                        //cout << "Insertion sort." << endl;
+                        duplicateTest.push_back("Insertion");
                     }
                     else if(j == 2){
-                        cout << "Merge sort." << endl;
+                        //cout << "Merge sort." << endl;
+                        duplicateTest.push_back("Merge");
                     }
                     else if(j == 3){
-                        cout << "Quick sort." << endl;
+                        //cout << "Quick sort." << endl;
+                        duplicateTest.push_back("Quick");
                     }
                     else if(j == 4){
-                        cout << "Selection sort." << endl;
+                        //cout << "Selection sort." << endl;
+                        duplicateTest.push_back("Selection");
                     }
                 }
             }
         }
     }
-    if(testNum == 5){
+
+    else if(testNum == 5){
         for(int i = 0; i < 5; i++){
-            cout << mysteryNames[i];
+            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        cout << "Insertion sort." << endl;
+                        //cout << "Insertion sort." << endl;
+                        almostSortedTest.push_back("Insertion");
                     }
                     else if(j == 4){
-                        cout << "Bubble sort." << endl;
+                        //cout << "Bubble sort." << endl;
+                        almostSortedTest.push_back("Bubble");
                     }
                     else if(j == 3){
-                        cout << "Selection sort." << endl;
+                        //cout << "Selection sort." << endl;
+                        almostSortedTest.push_back("Selection");
                     }
                     else if(j == 1){
-                        cout << "Quick sort." << endl;
+                        //cout << "Quick sort." << endl;
+                        almostSortedTest.push_back("Quick");
                     }
                     else if(j == 2){
-                        cout << "Merge sort." << endl;
+                        //cout << "Merge sort." << endl;
+                        almostSortedTest.push_back("Merge");
                     }
                 }
             }
@@ -257,6 +313,7 @@ void sorterMain::analyzeResults(int testNum){
     }
 
     sortTimes.clear();
+
 }
 
 sorterMain::sorterMain()
@@ -280,6 +337,7 @@ void sorterMain::sortRandomValues(){
 
     timeOrganizer();
     analyzeResults(1);
+
 
 }
 

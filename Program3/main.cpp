@@ -9,43 +9,30 @@ int main()
 {
     sorterMain sorterObject;
 
+    cout<<"The times of sort random are: " << endl;
+    sorterObject.sortRandomValues();
 
-//    cout<<"The times of sort random are: " << endl;
-//    sorterObject.sortRandomValues();
+    cout << endl;
 
-//    cout << endl;
+    cout<<"The times of sort ascending are: " << endl;
+    sorterObject.sortAscendingValues();
 
-//    cout<<"The times of sort ascending are: " << endl;
-//    sorterObject.sortAscendingValues();
+    cout << endl;
 
-//    cout << endl;
+    cout<<"The times of sort descending are: " << endl;
+    sorterObject.sortDescendingValues();
 
-//    cout<<"The times of sort descending are: " << endl;
-//    sorterObject.sortDescendingValues();
+    cout << endl;
 
-//    cout << endl;
+    cout<<"The times of sort duplicates are: " << endl;
+    sorterObject.sortDuplicateElements();
 
-//    cout<<"The times of sort even/odd are: " << endl;
-//    sorterObject.sortEvenOddValues();
-
-//    cout << endl;
-
-//    cout<<"The times of sort duplicates are: " << endl;
-//    sorterObject.sortDuplicateElements();
+    cout << endl;
 
     cout<<"The times of sort of almost sorted are: " << endl;
     sorterObject.sortAlmostSorted();
 
-//    cout << endl;
-
-//    cout<<"The times of sort reverse duplicates are: " << endl;
-//    sorterObject.sortReverseDuplicateElements();
-
-    //cout << endl;
-    //sorterObject.sortDescendingValues();
-
-    //cout << endl;
-    //sorterObject.sortEvenOddValues();
+    //sorterObject.organizeMysteryNames();
 
     return 1;
 
