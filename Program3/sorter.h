@@ -1,199 +1,367 @@
 #include <iostream>
+
 #include <vector>
 
 #ifndef SORTINGFUN_SORTER_H
+
 #define SORTINGFUN_SORTER_H
 
-//0: quick
-//1: Selection
-//2: insertion
-//3: bubble
-//4: merge
-
 template <typename T>
-class Sorter{
+
+class Sorter {
+
 protected:
+
     std::vector<T> data;
+
 public:
+
     Sorter() {}
-    Sorter(T& x):data(x){}
-    void setData(const std::vector<T>& x){
+
+    Sorter(T& x):data(x) {}
+
+    void setData(const std::vector<T>& x) {
+
         data = x;
+
     }
+
     virtual void sort() = 0;
+
 };
 
-//Quick Sort
-//adapted from https://gist.github.com/raarce/4069108
 template <typename T>
-class MysterySorterA : public Sorter<T>{
+
+class MysterySorterA : public Sorter<T> {
+
 public:
-    virtual void sort(){
-        quickSort(this->data, 0, this->data.size()-1);
-    }
-    int partition(std::vector<int> & a, unsigned int start, unsigned int end) {
-        int pivot = a[start];
-        unsigned int from_left = start+1;
-        unsigned int from_right = end;
-        unsigned int tmp;
-        while (from_left != from_right) {
-            if (a[from_left]  <= pivot) from_left++;
-            else {
-                while (( from_left != from_right)  && (pivot < a[from_right])) from_right--;
-                tmp =  a[from_right];
-                a[from_right] = a[from_left];
-                a[from_left] = tmp;
-            }
-        }
 
-        if (a[from_left]>pivot) from_left--;
-        a[start] = a[from_left];
-        a[from_left] = pivot;
+    virtual void sort() {
 
-        return (from_left);
+        // This is Quick sort.  Code is adapted
+
+        // from: https://www.geeksforgeeks.org/quick-sort
+
+        quickSort(0, this->data.size()-1);
+
     }
 
-    //recursive part of function
-    void quickSort(std::vector <int> & a, int p, int r) {
-        if (p < r) {
-            int q = partition(a, p, r);
-            quickSort(a, p, q - 1);
-            quickSort(a, q + 1, r);
-        }
-    }
-};
+private:
 
-//Selection Sort
-//variation adapated from geeksforgeeks.org/selection-sort
-template <typename T>
-class MysterySorterB : public Sorter<T>{
-public:
-    virtual void sort(){
+    void quickSort(int low, int high) {
 
-        std::vector<int> dataVec;
-        dataVec = this->data;
-        int vecsize = dataVec.size();
-        for (int j = 0; j < vecsize - 1; ++j) {
-            int min = j;
-            for ( int i = j+1; i < vecsize; ++i) {
-                if (dataVec.at(min) > dataVec.at(i)) {
-                    min = i;
-                }
-            }
-            if (min != j)
-                std::swap(dataVec.at(j), dataVec.at(min));
-        }
-    }
-};
+        if (low < high)
 
-//Insertion Sort
-//adapted from geeksforgeeks.org/insertion-sort/s
-template <typename T>
-class MysterySorterC : public Sorter<T>{
-public:
-        virtual void sort() {
-                int key;
-                int j;
-
-                for (size_t i = 1; i < this->data.size(); i++)
-                {
-                    key = this->data[i];
-                    j = i - 1;
-
-                    while (j >= 0 && this->data[j] > key)
-                    {
-                        this->data[j + 1] = this->data[j];
-                        j = j - 1;
-                    }
-                    this->data[j + 1] = key;
-                }
-            }
-};
-
-//Bubble Sort
-//adapted from https://stackoverflow.com/questions/30963204/c-vector-bubble-sort
-template <typename T>
-class MysterySorterD : public Sorter<T>{
-public:
-    virtual void sort(){
-        std::vector<int> a;
-        a = this->data;
-        bool swapp = true;
-        while(swapp)
         {
-            swapp = false;
-            for(unsigned int i = 0; i < a.size()-1; i++)
+
+            int partitionIndex = partition(low, high);
+
+            quickSort(low, partitionIndex - 1);
+
+            quickSort(partitionIndex + 1, high);
+
+        }
+
+    }
+
+    int partition (int low, int high) {
+
+        int pivot = this->data[low];
+
+        int i = (low - 1);
+
+        for (int j = low; j <= high - 1; j++)
+
+        {
+
+            if (this->data[j] < pivot)
+
             {
-                if (a[i]>a[i+1] )
-                {
-                    a[i] += a[i+1];
-                    a[i+1] = a[i] - a[i+1];
-                    a[i] -=a[i+1];
-                    swapp = true;
-                }
+
+                i++;
+
+                T temp = this->data[i];
+
+                this->data[i] = this->data[j];
+
+                this->data[j] = temp;
+
             }
-        }
-    }
+
+       }
+
+        T temp = this->data[i+1];
+
+        this->data[i+1] = this->data[low];
+
+        this->data[low] = temp;
+
+        return (i + 1);
+
+     }
+
 };
 
-//Merge Sort
-//adapated from geeksforgeeks.org/merge-sort
 template <typename T>
-class MysterySorterE : public Sorter<T>{
+
+class MysterySorterB : public Sorter<T> {
+
 public:
-    virtual void sort(){
 
-        std::vector<int> results;
-        results = merge_sort(this->data);
+    virtual void sort() {
+
+        // This is Merge sort.  Code is adapted
+
+        // from: https://www.geeksforgeeks.org/merge-sort/
+
+        mergeSort(0, this->data.size()-1);
 
     }
-    std::vector<int> merge_sort(std::vector<int>& vec)
-    {
 
-        if(vec.size() == 1)
+private:
+
+    void merge(int left, int middle, int right) {
+
+        int n1 = middle - left + 1;
+
+        int n2 =  right - middle;
+
+        std::vector<T> leftArray;
+
+        std::vector<T> rightArray;
+
+        for (int i = 0; i < n1; i++)
+
+            leftArray.push_back(this->data[left + i]);
+
+        for (int j = 0; j < n2; j++)
+
+            rightArray.push_back(this->data[middle + 1 + j]);
+
+        int i = 0;
+
+        int j = 0;
+
+        int k = left;
+
+        while (i < n1 && j < n2)
+
         {
-            return vec;
-        }
-        std::vector<int>::iterator middle = vec.begin() + (vec.size() / 2);
 
-        std::vector<int> left(vec.begin(), middle);
-        std::vector<int> right(middle, vec.end());
+            if (leftArray[size_t(i)] <= rightArray[size_t(j)])
 
-        left = merge_sort(left);
-        right = merge_sort(right);
-
-        return merge(left, right);
-    }
-    std::vector<int> merge(const std::vector<int>& left, const std::vector<int>& right)
-    {
-        std:: vector<int> result;
-        unsigned left_it = 0, right_it = 0;
-
-        while(left_it < left.size() && right_it < right.size())
-        {
-            if(left[left_it] < right[right_it])
             {
-                result.push_back(left[left_it]);
-                left_it++;
+
+                this->data[k] = leftArray[i];
+
+                i++;
+
             }
+
             else
+
             {
-                result.push_back(right[right_it]);
-                right_it++;
+
+                this->data[k] = rightArray[j];
+
+                j++;
+
             }
+
+            k++;
+
         }
-        while(left_it < left.size())
+
+        while (i < n1)
+
         {
-            result.push_back(left[left_it]);
-            left_it++;
+
+            this->data[k] = leftArray[i];
+
+            i++;
+
+            k++;
+
         }
-        while(right_it < right.size())
+
+        while (j < n2)
+
         {
-            result.push_back(right[right_it]);
-            right_it++;
+
+            this->data[k] = rightArray[j];
+
+            j++;
+
+            k++;
+
         }
-        return result;
+
+    }
+
+    void mergeSort(int left, int right) {
+
+        if (left < right)
+
+        {
+
+            int middle = left+(right-left)/2;
+
+            mergeSort(left, middle);
+
+            mergeSort(middle+1, right);
+
+            merge(left, middle, right);
+
+        }
+
     }
 
 };
-#endif // SORTER_H
+
+template <typename T>
+
+class MysterySorterC : public Sorter<T> {
+
+public:
+
+    virtual void sort() {
+
+        // This is Bubble sort.  Code is adapted
+
+        // from : https://geeksforgeeks.com/bubble-sort/
+
+        bool swapped;
+
+        for (size_t i = 0; i < this->data.size()-1; i++)
+
+        {
+
+          swapped = false;
+
+          for (size_t j = 0; j < this->data.size()-i-1; j++)
+
+          {
+
+             if (this->data[j] > this->data[j+1])
+
+             {
+
+                 T temp = this->data[j];
+
+                 this->data[j] = this->data[j+1];
+
+                 this->data[j+1] = temp;
+
+                 swapped = true;
+
+             }
+
+          }
+
+          if (swapped == false)
+
+            break;
+
+        }
+
+    }
+
+};
+
+template <typename T>
+
+class MysterySorterD : public Sorter<T> {
+
+public:
+
+    virtual void sort() {
+
+        // This is Selection sort.  Code is adapted
+
+        // from: https://www.geeksforgeeks.org/selection-sort/
+
+        int minIndex;
+
+        // Iterate over the data, moving the boundary of the unsorted array.
+
+        for (size_t i = 0; i < this->data.size()-1; i++)
+
+        {
+
+            // Find the minimum element in unsorted array.
+
+            minIndex = i;
+
+            for (size_t j = i+1; j < this->data.size(); j++)
+
+            {
+
+                if (this->data[j] < this->data[minIndex])
+
+                    minIndex = j;
+
+            }
+
+            // Swap the minimum element with the element at the lowest,
+
+            // unsorted index.
+
+            T temp = this->data[i];
+
+            this->data[i] = this->data[minIndex];
+
+            this->data[minIndex] = temp;
+
+        }
+
+    }
+
+};
+
+template <typename T>
+
+class MysterySorterE : public Sorter<T> {
+
+public:
+
+    virtual void sort() {
+
+        // This is Insertion sort.  Code is adapted
+
+        // from: https://www.geeksforgeeks.org/insertion-sort/
+
+        int key;
+
+        int j;
+
+        for (size_t i = 1; i < this->data.size(); i++)
+
+        {
+
+            key = this->data[i];
+
+            j = i - 1;
+
+            // Move elements of data[0..i-1], that are greater than key,
+
+            // to one position ahead of their current position.
+
+            while (j >= 0 && this->data[j] > key)
+
+            {
+
+                this->data[j + 1] = this->data[j];
+
+                j = j - 1;
+
+            }
+
+            this->data[j + 1] = key;
+
+        }
+
+    }
+
+};
+
+#endif
