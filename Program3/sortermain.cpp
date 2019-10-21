@@ -29,7 +29,6 @@ void sorterMain::populateMysteryA(vector<int> &Aelements){
 
     sortTimes.push_back(make_pair(totalTime,0));
     mysteryNames[0] = "MysterySortA is ";
-    cout << "quick time is " << totalTime << endl;
 }
 
 //calculating the sort time for MysteryB and storing designated values of time and mysteryName
@@ -52,8 +51,7 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
     totalTime = timeLength/50.0;
 
     sortTimes.push_back(make_pair(totalTime,1));
-    mysteryNames[1] = "MysterySortB is: ";
-    cout << "selection time is " << totalTime << endl;
+    mysteryNames[1] = "MysterySortB is ";
 
 }
 
@@ -76,8 +74,7 @@ void sorterMain::populateMysteryC(vector<int> &Celements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,2));
-    mysteryNames[2] = "MysterySortC is: ";
-    cout << "insertion time is " << totalTime << endl;
+    mysteryNames[2] = "MysterySortC is ";
 }
 
 //calculating the sort time for MysteryD and storing designated values of time and mysteryName
@@ -99,8 +96,7 @@ void sorterMain::populateMysteryD(vector<int> &Delements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,3));
-    mysteryNames[3] = "MysterySortD is: ";
-    cout << "bubble time is " << totalTime << endl;
+    mysteryNames[3] = "MysterySortD is ";
 }
 
 //calculating the sort time for MysteryE and storing designated values of time and mysteryName
@@ -122,16 +118,12 @@ void sorterMain::populateMysteryE(vector<int> &Eelements){
 
     totalTime = timeLength/50.0;
     sortTimes.push_back(make_pair(totalTime,4));
-    mysteryNames[4] = "MysterySortE is: ";
-    cout << "merge time is " << totalTime << endl;
+    mysteryNames[4] = "MysterySortE is ";
 }
 
 //organizing sortTimes vector pair to be in order
 void sorterMain::timeOrganizer(){
     sort(sortTimes.begin(), sortTimes.end());
-    for(unsigned int i = 0; i < sortTimes.size(); i++){
-        cout << sortTimes[i].first << "\t" << sortTimes[i].second << "\t"<< i << endl;
-    }
 }
 
 void sorterMain::organizeMysteryNames(){
@@ -150,36 +142,35 @@ void sorterMain::organizeMysteryNames(){
         resultsE.push_back(mysteryNamesVector[i][4]);
     }
 
-   string a = determineFinal(resultsA);
-   string b = determineFinal(resultsB);
-   string c = determineFinal(resultsC);
-   string d = determineFinal(resultsD);
-   string e = determineFinal(resultsE);
+    string finalA = determineFinal(resultsA);
+    string finalB = determineFinal(resultsB);
+    string finalC = determineFinal(resultsC);
+    string finalD = determineFinal(resultsD);
+    string finalE = determineFinal(resultsE);
 
-   for(unsigned int i = 0; i < 5; i++){
-       cout << mysteryNames[i] << " ";
-       if(i == 0){
-            cout << a << endl;
-       }
-       if(i == 1){
-            cout << b << endl;
-       }
-       if(i == 2){
-            cout << c << endl;
-       }
-       if(i == 3){
-            cout << d << endl;
-       }
-       if(i == 4){
-            cout << e << endl;
-       }
+    for(unsigned int i = 0; i < 5; i++){
+        cout << mysteryNames[i];
+        if(i == 0){
+            cout << finalA << "." << endl;
+        }
+        if(i == 1){
+            cout << finalB << "." << endl;
+        }
+        if(i == 2){
+            cout << finalC << "." << endl;
+        }
+        if(i == 3){
+            cout << finalD << "." << endl;
+        }
+        if(i == 4){
+            cout << finalE << "." << endl;
+        }
 
-   }
+    }
 }
 
 string sorterMain::determineFinal(vector<string>& resultsMystery){
 
-    cout << "we made it into determine final" << endl << endl;
     unordered_map<string, int> frequency;
     int counter = 0;
     string finalResult = "";
@@ -197,6 +188,7 @@ string sorterMain::determineFinal(vector<string>& resultsMystery){
 
     return finalResult;
 }
+
 //printing results based up order in sortTimes
 void sorterMain::analyzeResults(int testNum){
 
