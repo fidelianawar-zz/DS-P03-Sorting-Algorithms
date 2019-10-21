@@ -26,6 +26,8 @@ private:
     vector<pair<double, int>> sortTimesD;
     vector<pair<double, int>> sortTimesE;
 
+    vector<string> mysteryA, mysteryB, mysteryC, mysteryD, mysteryE;
+
     vector<vector<pair<double, int>>> totalInformation;
 
 
@@ -54,7 +56,7 @@ public:
     void populateMysteryE(vector<int> &e);
 
     void timeOrganizer();
-    void analyzeResults();
+    void analyzeResults(int);
     void clearVectors();
 };
 

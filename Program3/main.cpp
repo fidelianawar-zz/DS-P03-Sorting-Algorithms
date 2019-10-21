@@ -10,13 +10,13 @@ int main()
     sorterMain sorterObject;
 
 
-    cout<<"The times of sort random are: " << endl;
-    sorterObject.sortRandomValues();
+//    cout<<"The times of sort random are: " << endl;
+//    sorterObject.sortRandomValues();
 
 //    cout << endl;
 
-//    cout<<"The times of sort ascending are: " << endl;
-//    sorterObject.sortAscendingValues();
+    cout<<"The times of sort ascending are: " << endl;
+    sorterObject.sortAscendingValues();
 
 //    cout << endl;
 

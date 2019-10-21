@@ -4,6 +4,12 @@
 #ifndef SORTINGFUN_SORTER_H
 #define SORTINGFUN_SORTER_H
 
+//0: quick
+//1: Selection
+//2: insertion
+//3: bubble
+//4: merge
+
 template <typename T>
 class Sorter{
 protected:
