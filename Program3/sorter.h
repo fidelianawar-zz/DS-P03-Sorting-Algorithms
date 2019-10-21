@@ -8,155 +8,198 @@ template <typename T>
 class Sorter{
 protected:
     std::vector<T> data;
+    std::vector<T> revData;
+    int size;
 public:
     Sorter(){}
     Sorter(T& x):data(x){}
-    void setData(const std::vector<T>& x){data = x;}
+    void setData(const std::vector<T>& x){
+        data = x;
+    }
+    void swap(T* a, T* b){
+           T tmp = *a;
+           *a = *b;
+           *b = tmp;
+       }
+    std::vector<T> getData(){
+        return this->data;
+    }
+
     virtual void sort() = 0;
-    void print(){
-        // for(int i = 0; i<this->data.size(); i++) std::cout << this->data[i] << " ";
-        std::cout << std::endl;
-    }// print
+
 };
 
 template <typename T>
-class MysterySorterA : public Sorter<T>{   // A
+//QuickSort
+class MysterySorterA : public Sorter<T> {
 public:
-    virtual void sort(){                   // Insertion
-        int i, j;
-        T key;
-        for (i = 1; i < this->data.size(); i++){
-            key = this->data[i];
-            j = i - 1;
-            while (j >= 0 && this->data[j] > key){
-                this->data[j + 1] = this->data[j];
-                j--;
-            }// while
-            this->data[j + 1] = key;
-        }// for
-        // for(int i=0; i<this->data.size(); i++) std::cout << this->data[i] << std::endl;
-    }// Insertion
-};
-
-template <typename T>
-class MysterySorterB : public Sorter<T>{   // B
-public:
-    virtual void sort(){                   // Bubble
-        for (int i = 0; i < this->data.size()-1; i++){
-            bool sorted = true;
-            for (int j = 0; j < this->data.size()-i-1; j++){
-                if (this->data[j] > this->data[j+1]){
-                    sorted = false;
-                    T temp = this->data[j];
-                    this->data[j] = this->data[j+1];
-                    this->data[j+1] = temp;
-                }// if
-            }// for
-            if (sorted == true) break;
-        }// for
-        // for(int i=0; i<this->data.size(); i++) std::cout << this->data[i] << std::endl;
-    }// Bubble
-};
-
-template <typename T>
-class MysterySorterC : public Sorter<T>{     // C
-public:
-    virtual void sort(){                     // Selection
-        int min_idx;
-        for (int i = 0; i < this->data.size(); i++){
-            min_idx = i;
-            for (int j = i + 1; j < this->data.size(); j++){
-                if (this->data[j] < this->data[min_idx]) min_idx = j;
-            }// for
-            T temp = this->data[min_idx];
-            this->data[min_idx] = this->data[i];
-            this->data[i] = temp;
-        }// for
-        // for(int i=0; i<this->data.size(); i++) std::cout << this->data[i] << std::endl;
-    }// Selection
-};
-
-template <typename T>
-class MysterySorterD : public Sorter<T>{   // D
-private:
-    int partition(std::vector<T>& vec, int& low, int& high){  // Quick
-        T pivot = vec[low];
-        int i = low + 1;
-        for (int j = low + 1; j <= high; j++){
-            if (vec[j] < pivot){
-                T temp = vec[i];
-                vec[i] = vec[j];
-                vec[j] = temp;
-                i++;
-            }// if
-        }// for
-        T temp = vec[low];
-        vec[low] = vec[i-1];
-        vec[i-1] = temp;
-        return (i - 1);
-    }// partition
-    void quickSort(std::vector<T>& vect, int low, int high){
-        if (low < high){
-            int pi = partition(vect, low, high);
-            quickSort(vect, low, pi - 1);
-            quickSort(vect, pi + 1, high);
-        }// if
-    }// quick
-public:
-    virtual void sort(){                                    // Quick
-      quickSort(this->data, 0, this->data.size()-1);
-      // for(int i=0; i<this->data.size(); i++) std::cout << this->data[i] << std::endl;
-    }// Quick
-};
-
-template <typename T>
-class MysterySorterE : public Sorter<T>{   // E
-private:
-    void merge(std::vector<T>& vec, int l, int m, int r){   // Merge
-        int i, j, k;
-        int n1 = m - l + 1;
-        int n2 =  r - m;
-        std::vector<T> L, R;
-        for (i = 0; i < n1; i++) L.push_back(vec[l + i]);
-        for (j = 0; j < n2; j++) R.push_back(vec[m + 1+ j]);
-        i = 0;
-        j = 0;
-        k = l;
-        while (i < n1 && j < n2){
-            if(L[i] <= R[j]){
-                vec[k] = L[i];
-                i++;
+    int partition(std::vector<T>& data, int start, int end){
+        T pivot = data[start];
+        int pIndex = start + 1;
+        int i;
+        T temp;
+        for(i = start + 1; i <= end; i++){
+            if(data[i] < pivot){
+                temp = data[i];
+                data[i] = data[pIndex];
+                data[pIndex] = temp;
+                pIndex++;
             }
-            else{
-                vec[k] = R[j];
-                j++;
-            }
-            k++;
-        }// while
-        while (i < n1){
-            vec[k] = L[i];
-            i++;
-            k++;
-        }// while
-        while (j < n2){
-            vec[k] = R[j];
-            j++;
-            k++;
-        }// while
-    }// merge
-    void mergeSort(std::vector<T>& vect, int l, int r){
-        if (l < r){
-            int m = l+(r-l)/2;
-            mergeSort(vect, l, m);
-            mergeSort(vect, m+1, r);
-            merge(vect, l, m, r);
-        }// if
-    }// mergeSort
+        }
+        temp = data[start];
+        data[start] = data[pIndex - 1];
+        data[pIndex - 1] = temp;
+        return pIndex-1;
+    }
+
+    void QuickSort(std::vector<T> & data, int start, int end){
+        if(start < end){
+            int pIndex = partition(data, start, end);
+            QuickSort(data, start, pIndex - 1);
+            QuickSort(data, pIndex + 1, end);
+        }
+    }
+    virtual void sort(){
+        QuickSort(this->data, 0, this->size - 1);
+//        for(int i = 0; i < this->size; i++){
+//            std::cout << this->data[i] << std::endl;
+//        }
+    }
+
+};
+
+template <typename T>
+//Selection Sort
+class MysterySorterB : public Sorter<T>{
 public:
     virtual void sort(){
-        mergeSort(this->data, 0, this->data.size()-1);
-        // for(int i=0; i<this->data.size(); i++) std::cout << this->data[i] << std::endl;
+        int i, j, smallestIndex;
+        T temp;
+        for(i = 0; i < this->size - 1; i++){
+            smallestIndex = i;
+            for(j = i + 1; j < this->size; j++){
+                if(this->data[j] < this->data[smallestIndex]){
+                    smallestIndex = j;
+                }
+            }
+            temp = this->data[i];
+            this->data[i] = this->data[smallestIndex];
+            this->data[smallestIndex] = temp;
+        }
+//        for(int i = 0; i < this->size; i++){
+//            std::cout << this->data[i] << std::endl;
+//        }
     }
 };
 
+template <typename T>
+//Merge sort
+class MysterySorterC : public Sorter<T>{
+public:
+    void Merge(std::vector<T>& data, int i, int j, int k){
+        int mergedSize;
+        int mergePos;
+        int leftPos;
+        int rightPos;
+        T* mergedNumbers = nullptr;
+        mergePos = 0;
+        mergedSize = k - i + 1;
+        leftPos = i;
+        rightPos = j + 1;
+        mergedNumbers = new T[mergedSize];
+
+        while (leftPos <= j && rightPos <= k) {
+            if (data[leftPos] < data[rightPos]) {
+                mergedNumbers[mergePos] = data[leftPos];
+                ++leftPos;
+            }
+            else {
+                mergedNumbers[mergePos] = data[rightPos];
+                ++rightPos;
+            }
+            ++mergePos;
+        }
+
+        while (leftPos <= j) {
+            mergedNumbers[mergePos] = data[leftPos];
+            ++leftPos;
+            ++mergePos;
+        }
+
+        while (rightPos <= k) {
+            mergedNumbers[mergePos] = data[rightPos];
+            ++rightPos;
+            ++mergePos;
+
+        }
+        for (mergePos = 0; mergePos < mergedSize; ++mergePos) {
+            data[i + mergePos] = mergedNumbers[mergePos];
+        }
+        delete [] mergedNumbers;
+    }
+    void MergeSort(std::vector<T>& data, int i, int k){
+        int j;
+        if(i < k){
+            j = (i+k)/2;
+            MergeSort(data, i, j);
+            MergeSort(data, j + 1, k);
+            Merge(data, i, j, k);
+        }
+    }
+    virtual void sort(){
+        MergeSort(this->data, 0,this->size - 1);
+//        for(int i = 0; i < this->size; i++){
+//            std::cout << this->data[i] << std::endl;
+//        }
+    }
+};
+
+template <typename T>
+//bubble sort
+class MysterySorterD : public Sorter<T>{
+public:
+    virtual void sort(){
+           std::vector<T> arr = (this->data);
+           bool swapped = false;
+           int size = arr.size();
+           do{
+              swapped = false;
+              for(int i = 1; i < size; ++i){
+                  if(arr[i-1] > arr[i]){
+                      this->swap(&arr[i-1],&arr[i]);
+                      swapped = true;
+                  }
+              }
+              --size;
+           }while(swapped);
+
+//        for(int i = 0; i < this->size; i++){
+//            std::cout << this->data[i] << std::endl;
+//        }
+    }
+};
+
+template <typename T>
+//insertion sort
+class MysterySorterE : public Sorter<T>{
+public:
+    virtual void sort(){
+        int i, j;
+        T key;
+            for (i = 1; i < this->size; i++)
+            {
+                key = this->data[i];
+                j = i - 1;
+                while (j >= 0 && this->data[j] > key)
+                {
+                    this->data[j + 1] = this->data[j];
+                    j = j - 1;
+                }
+                this->data[j + 1] = key;
+            }
+//            for(int i = 0; i < this->size; i++){
+//                std::cout << this->data[i] << std::endl;
+//            }
+    }
+};
 #endif // SORTER_H
