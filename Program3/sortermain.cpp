@@ -17,6 +17,7 @@ void sorterMain::populateMysteryA(vector<int> &Aelements){
 
     mysteryA->setData(Aelements);
 
+    //calculating sort time 50 times and averaging all times
     for(int i = 0; i < 50; i++){
         auto start = high_resolution_clock::now();
         mysteryA->sort();
@@ -40,6 +41,7 @@ void sorterMain::populateMysteryB(vector<int> &Belements){
 
     mysteryB->setData(Belements);
 
+    //calculating sort time 50 times and averaging all times
     for(int i = 0; i < 50; i++){
         auto start = high_resolution_clock::now();
         mysteryB->sort();
@@ -64,6 +66,7 @@ void sorterMain::populateMysteryC(vector<int> &Celements){
 
     mysteryC->setData(Celements);
 
+    //calculating sort time 50 times and averaging all times
     for(int i = 0; i < 50; i++){
         auto start = high_resolution_clock::now();
         mysteryC->sort();
@@ -86,6 +89,7 @@ void sorterMain::populateMysteryD(vector<int> &Delements){
 
     mysteryD->setData(Delements);
 
+    //calculating sort time 50 times and averaging all times
     for(int i = 0; i < 50; i++){
         auto start = high_resolution_clock::now();
         mysteryD->sort();
@@ -108,6 +112,7 @@ void sorterMain::populateMysteryE(vector<int> &Eelements){
 
     mysteryE->setData(Eelements);
 
+    //calculating sort time 50 times and averaging all times
     for(int i = 0; i < 50; i++){
         auto start = high_resolution_clock::now();
         mysteryE->sort();
@@ -126,14 +131,17 @@ void sorterMain::timeOrganizer(){
     sort(sortTimes.begin(), sortTimes.end());
 }
 
+//determining final sorted result output
 void sorterMain::organizeMysteryNames(){
 
+    //pushing back all test vector results to my main double vector
     mysteryNamesVector.push_back(randomTest);
     mysteryNamesVector.push_back(ascendingTest);
     mysteryNamesVector.push_back(descendingTest);
     mysteryNamesVector.push_back(duplicateTest);
     mysteryNamesVector.push_back(almostSortedTest);
 
+    //pushinig back each test result [i] to relative mystery sort function result
     for(vector<vector<int>>::size_type i = 0; i < mysteryNamesVector.size(); i++){
         resultsA.push_back(mysteryNamesVector[i][0]);
         resultsB.push_back(mysteryNamesVector[i][1]);
@@ -142,6 +150,7 @@ void sorterMain::organizeMysteryNames(){
         resultsE.push_back(mysteryNamesVector[i][4]);
     }
 
+    //determining final string result
     string finalA = determineFinal(resultsA);
     string finalB = determineFinal(resultsB);
     string finalC = determineFinal(resultsC);
@@ -169,6 +178,8 @@ void sorterMain::organizeMysteryNames(){
     }
 }
 
+//finding frequency of elements in vector and using most frequent
+//element as final answer
 string sorterMain::determineFinal(vector<string>& resultsMystery){
 
     unordered_map<string, int> frequency;
@@ -192,29 +203,24 @@ string sorterMain::determineFinal(vector<string>& resultsMystery){
 //printing results based up order in sortTimes
 void sorterMain::analyzeResults(int testNum){
 
+    //if performing test case 1 do this:
     if(testNum == 1){
         for(int i = 0; i < 5; i++){
-            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        //cout << "Insertion sort." << endl;
                         randomTest.push_back("InsertionSort");
                     }
                     else if(j == 4){
-                        //cout << "Bubble sort." << endl;
                         randomTest.push_back("BubbleSort");
                     }
                     else if(j == 3){
-                        //cout << "Selection sort." << endl;
                         randomTest.push_back("SelectionSort");
                     }
                     else if(j == 1){
-                        //cout << "Quick sort." << endl;
                         randomTest.push_back("QuickSort");
                     }
                     else if(j == 2){
-                        //cout << "Merge sort." << endl;
                         randomTest.push_back("MergeSort");
                     }
                 }
@@ -222,29 +228,24 @@ void sorterMain::analyzeResults(int testNum){
         }
     }
 
+    //if performing test case 2 do this:
     else if(testNum == 2){
         for(int i = 0; i < 5; i++){
-            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        //cout << "Bubble sort." << endl;
                         ascendingTest.push_back("BubbleSort");
                     }
                     else if(j == 1){
-                        //cout << "Insertion sort." << endl;
                         ascendingTest.push_back("InsertionSort");
                     }
                     else if(j == 2){
-                        //cout << "Merge sort." << endl;
                         ascendingTest.push_back("MergeSort");
                     }
                     else if(j == 3){
-                        //cout << "Quick sort." << endl;
                         ascendingTest.push_back("QuickSort");
                     }
                     else if(j == 4){
-                        //cout << "Selection sort." << endl;
                         ascendingTest.push_back("SelectionSort");
                     }
                 }
@@ -252,29 +253,24 @@ void sorterMain::analyzeResults(int testNum){
         }
     }
 
+    //if performing test case 3 do this:
     else if(testNum == 3){
         for(int i = 0; i < 5; i++){
-            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        //cout << "Insertion sort." << endl;
                         descendingTest.push_back("InsertionSort");
                     }
                     else if(j == 1){
-                        //cout << "Merge sort." << endl;
                         descendingTest.push_back("MergeSort");
                     }
                     else if(j == 2){
-                        //cout << "Quick sort." << endl;
                         descendingTest.push_back("QuickSort");
                     }
                     else if(j == 3){
-                        //cout << "Selection sort." << endl;
                         descendingTest.push_back("SelectionSort");
                     }
                     else if(j == 4){
-                        // cout << "Bubble sort." << endl;
                         descendingTest.push_back("BubbleSort");
                     }
                 }
@@ -282,29 +278,24 @@ void sorterMain::analyzeResults(int testNum){
         }
     }
 
+    //if performing test case 4 do this:
     else if(testNum == 4){
         for(int i = 0; i < 5; i++){
-            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        //cout << "Bubble sort." << endl;
                         duplicateTest.push_back("BubbleSort");
                     }
                     else if(j == 1){
-                        //cout << "Insertion sort." << endl;
                         duplicateTest.push_back("InsertionSort");
                     }
                     else if(j == 2){
-                        //cout << "Merge sort." << endl;
                         duplicateTest.push_back("MergeSort");
                     }
                     else if(j == 3){
-                        //cout << "Quick sort." << endl;
                         duplicateTest.push_back("QuickSort");
                     }
                     else if(j == 4){
-                        //cout << "Selection sort." << endl;
                         duplicateTest.push_back("SelectionSort");
                     }
                 }
@@ -312,35 +303,32 @@ void sorterMain::analyzeResults(int testNum){
         }
     }
 
+    //if performing test case 5 do this:
     else if(testNum == 5){
         for(int i = 0; i < 5; i++){
-            //cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
                 if(sortTimes[j].second == i){
                     if(j == 0){
-                        //cout << "Insertion sort." << endl;
                         almostSortedTest.push_back("InsertionSort");
                     }
                     else if(j == 4){
-                        //cout << "Bubble sort." << endl;
                         almostSortedTest.push_back("BubbleSort");
                     }
                     else if(j == 3){
-                        //cout << "Selection sort." << endl;
                         almostSortedTest.push_back("SelectionSort");
                     }
                     else if(j == 1){
-                        //cout << "Quick sort." << endl;
                         almostSortedTest.push_back("QuickSort");
                     }
                     else if(j == 2){
-                        //cout << "Merge sort." << endl;
                         almostSortedTest.push_back("MergeSort");
                     }
                 }
             }
         }
     }
+
+    //clearing sort times vector pair for each test case
     sortTimes.clear();
 }
 
@@ -432,7 +420,7 @@ void sorterMain::sortDuplicateElements(){
 
 }
 
-//elements with duplicate values
+//elements with 3/4 of values sorted, rest random
 void sorterMain::sortAlmostSorted(){
 
     vector<int> testVec;
@@ -476,7 +464,7 @@ void sorterMain::sortEvenOddValues(){
     timeOrganizer();
 }
 
-//elements with duplicate values
+//elements with duplicate reverse values
 void sorterMain::sortReverseDuplicateElements(){
 
     vector<int> testVec;
@@ -497,6 +485,7 @@ void sorterMain::sortReverseDuplicateElements(){
     timeOrganizer();
 }
 
+//determining worst merge case
 void sorterMain::populateMergeWorst(){
 
     double timeLength = 0.0;
@@ -518,8 +507,6 @@ void sorterMain::populateMergeWorst(){
         timeLength += duration.count();
     }
     totalTime = timeLength/1000;
-    cout << "The time it took to sort was: " << totalTime << " milliseconds." << endl;
-
 }
 
 
