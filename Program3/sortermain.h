@@ -26,14 +26,11 @@ private:
     vector<pair<double, int>> sortTimesD;
     vector<pair<double, int>> sortTimesE;
 
-    vector<string> mysteryA, mysteryB, mysteryC, mysteryD, mysteryE;
-
-    vector<vector<pair<double, int>>> totalInformation;
-
+    vector<string> randomTest, ascendingTest, descendingTest, duplicateTest, almostSortedTest;
 
     string mysteryNames[5];
 
-    int num = 10000;
+    int num = 6000;
 
 
 public:
@@ -48,6 +45,7 @@ public:
     void sortEvenOddValues();
     void sortDuplicateElements();
     void sortReverseDuplicateElements();
+    void sortAlmostSorted();
 
     void populateMysteryA(vector<int> &a);
     void populateMysteryB(vector<int> &b);
@@ -57,7 +55,7 @@ public:
 
     void timeOrganizer();
     void analyzeResults(int);
-    void clearVectors();
+    void finalResults();
 };
 
 

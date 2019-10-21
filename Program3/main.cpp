@@ -15,8 +15,8 @@ int main()
 
 //    cout << endl;
 
-    cout<<"The times of sort ascending are: " << endl;
-    sorterObject.sortAscendingValues();
+//    cout<<"The times of sort ascending are: " << endl;
+//    sorterObject.sortAscendingValues();
 
 //    cout << endl;
 
@@ -32,6 +32,9 @@ int main()
 
 //    cout<<"The times of sort duplicates are: " << endl;
 //    sorterObject.sortDuplicateElements();
+
+    cout<<"The times of sort of almost sorted are: " << endl;
+    sorterObject.sortAlmostSorted();
 
 //    cout << endl;
 

@@ -133,15 +133,6 @@ void sorterMain::timeOrganizer(){
     }
 }
 
-void sorterMain::clearVectors(){
-    totalInformation.clear();
-    sortTimesA.clear();
-    sortTimesB.clear();
-    sortTimesC.clear();
-    sortTimesD.clear();
-    sortTimesE.clear();
-}
-
 //printing results based up order in sortTimes
 void sorterMain::analyzeResults(int testNum){
     if(testNum == 1){
@@ -168,7 +159,7 @@ void sorterMain::analyzeResults(int testNum){
             }
         }
     }
-    if(testNum == 2){
+    else if(testNum == 2 || testNum == 4){
         for(int i = 0; i < 5; i++){
             cout << mysteryNames[i];
             for(unsigned int j = 0; j < 5; j++){
@@ -186,12 +177,85 @@ void sorterMain::analyzeResults(int testNum){
                         cout << "Quick sort." << endl;
                     }
                     else if(j == 4){
+                        cout << "Selection sort." << endl;
+                    }
+                }
+            }
+        }
+    }
+    else if(testNum == 3){
+        for(int i = 0; i < 5; i++){
+            cout << mysteryNames[i];
+            for(unsigned int j = 0; j < 5; j++){
+                if(sortTimes[j].second == i){
+                    if(j == 0){
+                        cout << "Insertion sort." << endl;
+                    }
+                    else if(j == 1){
+                        cout << "Merge sort." << endl;
+                    }
+                    else if(j == 2){
+                        cout << "Quick sort." << endl;
+                    }
+                    else if(j == 3){
+                        cout << "Selection sort." << endl;
+                    }
+                    else if(j == 4){
                         cout << "Bubble sort." << endl;
                     }
                 }
             }
         }
     }
+    else if(testNum == 4){
+        for(int i = 0; i < 5; i++){
+            cout << mysteryNames[i];
+            for(unsigned int j = 0; j < 5; j++){
+                if(sortTimes[j].second == i){
+                    if(j == 0){
+                        cout << "Bubble sort." << endl;
+                    }
+                    else if(j == 1){
+                        cout << "Insertion sort." << endl;
+                    }
+                    else if(j == 2){
+                        cout << "Merge sort." << endl;
+                    }
+                    else if(j == 3){
+                        cout << "Quick sort." << endl;
+                    }
+                    else if(j == 4){
+                        cout << "Selection sort." << endl;
+                    }
+                }
+            }
+        }
+    }
+    if(testNum == 5){
+        for(int i = 0; i < 5; i++){
+            cout << mysteryNames[i];
+            for(unsigned int j = 0; j < 5; j++){
+                if(sortTimes[j].second == i){
+                    if(j == 0){
+                        cout << "Insertion sort." << endl;
+                    }
+                    else if(j == 4){
+                        cout << "Bubble sort." << endl;
+                    }
+                    else if(j == 3){
+                        cout << "Selection sort." << endl;
+                    }
+                    else if(j == 1){
+                        cout << "Quick sort." << endl;
+                    }
+                    else if(j == 2){
+                        cout << "Merge sort." << endl;
+                    }
+                }
+            }
+        }
+    }
+
     sortTimes.clear();
 }
 
@@ -257,6 +321,7 @@ void sorterMain::sortDescendingValues(){
     populateMysteryE(testVec);
 
     timeOrganizer();
+    analyzeResults(3);
 
     //    double longestTime = 0.0;
     //    for(unsigned int i = 0; i < sortTimes.size(); i++){
@@ -264,6 +329,50 @@ void sorterMain::sortDescendingValues(){
     //            longestTime = sortTimes[i].second;
     //        }
     //    }
+
+}
+
+//elements with duplicate values
+void sorterMain::sortDuplicateElements(){
+
+    vector<int> testVec;
+
+    for(int i = 0; i < num; i+=2){
+        testVec.push_back(i);
+        testVec.push_back(i);
+    }
+
+    populateMysteryA(testVec);
+    populateMysteryB(testVec);
+    populateMysteryC(testVec);
+    populateMysteryD(testVec);
+    populateMysteryE(testVec);
+
+    timeOrganizer();
+    analyzeResults(4);
+
+}
+
+//elements with duplicate values
+void sorterMain::sortAlmostSorted(){
+
+    vector<int> testVec;
+
+    for(int i = 0; i < num*(3/4); i++){
+        testVec.push_back(i);
+    }
+    for(int i = num*(3/4); i < num; i++){
+        testVec.push_back(((rand()%100)+1));
+    }
+
+    populateMysteryA(testVec);
+    populateMysteryB(testVec);
+    populateMysteryC(testVec);
+    populateMysteryD(testVec);
+    populateMysteryE(testVec);
+
+    timeOrganizer();
+    analyzeResults(5);
 
 }
 
@@ -276,25 +385,6 @@ void sorterMain::sortEvenOddValues(){
         testVec.push_back(i);
     }
     for(int i = 1; i < num; i+=2){
-        testVec.push_back(i);
-    }
-
-    populateMysteryA(testVec);
-    populateMysteryB(testVec);
-    populateMysteryC(testVec);
-    populateMysteryD(testVec);
-    populateMysteryE(testVec);
-
-    timeOrganizer();
-}
-
-//elements with duplicate values
-void sorterMain::sortDuplicateElements(){
-
-    vector<int> testVec;
-
-    for(int i = 0; i < num; i+=2){
-        testVec.push_back(i);
         testVec.push_back(i);
     }
 
